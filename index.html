@@ -1,164 +1,521 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>anza30 — Built to back the ambitious.</title>
-<meta name="description" content="anza30 is an investment group bringing together exceptional founders and investors to back the most ambitious builders.">
-<meta property="og:title" content="anza30 — Built to back the ambitious.">
-<meta property="og:description" content="An investment group bringing together exceptional founders and investors to back the most ambitious builders.">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ANZA(30) — 30 Business Angels. One Line In Your Cap Table.</title>
+<meta name="description" content="ANZA(30) invests at the pre-seed and seed stages, backing ambitious founders building for international markets. 30 business angels, one line in your cap table.">
+<meta name="theme-color" content="#383838">
+<meta property="og:title" content="ANZA(30) — 30 Business Angels. One Line In Your Cap Table.">
+<meta property="og:description" content="ANZA(30) invests at the pre-seed and seed stages, backing ambitious founders building for international markets. 30 business angels, one line in your cap table.">
 <meta property="og:type" content="website">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAIGNIUk0AAHomAACAhAAA+gAAAIDoAAB1MAAA6mAAADqYAAAXcJy6UTwAAAAGYktHRABaABoAGxA0g18AAAAHdElNRQfqCB8POzRVW8L8AAAAJXRFWHRkYXRlOmNyZWF0ZQAyMDI2LTA4LTMxVDE1OjU4OjU4KzAwOjAwE5EVMgAAACV0RVh0ZGF0ZTptb2RpZnkAMjAyNi0wOC0zMVQxNTo1ODo1OCswMDowMGLMrY4AAAAodEVYdGRhdGU6dGltZXN0YW1wADIwMjYtMDgtMzFUMTU6NTk6NTErMDA6MDBPg6K8AAAKQUlEQVR42u2aW2ycRxXHfzPfZW/2rh1fmziOk9iOnaS5tknqpiqhbahqKH0oElDE7aEv9KUSvFQggQQPCAmeeAQeuAhRQWlL0vRGS9OkblPi1iH3i+M0iS+xvetL1nubGR6+9drOru0EqXwP3SNZlvb7ZuY/vznnzJnZFV9fucrwGTbptwC/rQzAbwF+WxmA3wL8tjIAvwX4bWUAfgvw28oA/Bbgt5UB+C3AbysD8FuA31YG4LcAv+0zD8D+tAcQApqaQ0SjNqXv3uZ/KgptEvEc1z6ZWbRfY7z3VtS4rFkboq7RpSJiYQxMTeUYHsxw5fIMiXi20KcvAKSU7O6KsbbVQevbu36UUnD2VIbBa6mSbYyBcNhix64om7aEiMYsLFsgMIDAGBelQsTHK+g7nuTj45Ok07okhP+LB9g22A4Y7Ym/9bkn2hSeSWmwrEX8xUBFhc3+7hraO12EAG0MotCX186yDHX1Fvv2x6ipdfjn6+OkU6oIwqcOwBhDIqEZHVH51RRwazAYQaRCEgqLgmuziMtKKdizt4oNGwMFaEYLhkayjI9lEQLq6lxW1Np5wJqtO8LE4znePxIv6u/OARQU3p4pZXjrtTFsW2AoBmA01DUEeOSxKsIRCyHg5rTh7KmZIvc3BhrvCtB5d9DrS0AmbXjv8CR9vdPMJBUAFZUWO3dHuWd3JZYFQmq2bI9w7vRN4uOZOwNgtMYYg2Xb2K6LlBKtFNlMBq0UQkrEMkDSaUUqVdo7Vq4Kse+RGLV1FgBTU4Y3DyU4c3K6JPs164JEIgIMCCE4czLJ+0cn0GpuXSYnFEf+laCmzqGtPYgxUFUtWbM2dAcAjLde9c1NbLpvN+u2bqKqoR7bdcim0owPDnOht49TPR8wPjiMkEvvqLcyMgaaW8Ls766mvsGbfCKuef1gggvnbpZ0MssS1NU7COG1z+UM588kUTmDlGLBWOmU4eLZJOtbAwgBlgUNjU5RnyUBGGNwHIf7n/gij3zra9Q1N2FZ1sINS8B9T3QzeLGfQ7/5PccOvYHWejmHKkx+7fowX+iuprrGAzd2Q/PqgTgD/clFI0xKCAbnHuayMD2VQyySMKYmFVp74AAiFdbtAZBS8tBTX+HxZ57GDQbRWnsxZ0BrjZTSSwVS0LShjad++AMc1+XwCy8vGw4AbRsi7O+uJhrzkt7QoOLQy+NcvzpTEFvajUBaopAgDaZoV7l1Iec/F7K47yIAWilat29h/3e+gTM7ea05c+w4J9/tYSqeYMVdDWx/6EFWbWhDK0WosoLHnv42Fz7qY/DS5SXDwXEku7qixKoEWoM2MJFQ1De4GG0YvZFBKbN0njW3/M+HRPEGI+a9WLrDIgBCSnY+vI/qxnq0UmDZvPfCAf78818xOZ7w3hHQ849DfPdnP6J1xza01tQ2reTuB7q4frGfpbTPxuOsSQEbOl02dLgkk4Zzp1O89+4EE4ns7UHAm/yqJpeNWyKoHJz4aJqR4WwxiBLeUgRASsnV8xd564/PF7L+od/9gal4AsueUz50+QpHX3yFdVu35F1T0rKpE9txlskFAiHEXKgIb7WNhkiFYPu9YVbUOhx8cZREPLvsjmsMRGMWj36phsaVDiBoaHR54S838sCX7sAu7tBw9KWDHH3pYEGoynn7q1Kq8J5WmpErV8llMtgB16vQqmNYto3OZBYdUClNX2+SM6cgNaNxXEHT6gDr2wK4AW/8lnUO9z1QxWsHRhcpn+diwBhDLGazosZGaxDCUN/oEo5IjFm+9C6ZBIUQ3v4PRGJRquvrqFxRTSAcQgiBVppcNktzR5vnw7PtpIRlVkwpQ++HiXxy8mKz95hg644o+/ZHcRyvtG3vDPDRvwMMXkuV8AJRaCuEIB7PMTKSpak5AAauX0sxPa1YUWPPSw53AMBoTUPzarqe6GbT/XuoWdlIIBRC2lZhcGMMQgjk/IC+zZ9aCDF3BpiF0tc7Scv6AB0bA2gN4bBkdXOA61cXApit+Y0RgHfAmZ5SHHppjI7NEVTOcOrETTIpPX+gucbLAdBa075zG089932aOtpAeLus1ppMOu0lxrxJaS0E8D+aEJDNGq70p2nvCOQ/M9TWOyxdX80dn0eGs4wMJwqe4VEq9fYyAGoaG3jy2e+xemO7F/vGcP74xxx79U2GB66QSaVnSbFmcydPPvsMtuuwmBnjaZrVsviEDFOTObSeeycUtpBSLHmMno0kUehXzI17Gy5ZBGDbvgdYs7kTlVNIS3Ly6Af89rmfEB8aWZBRtcrlk9/igwgBsZhDMCSRludJozcyZDK3VzEWrZgBpb0SfXaRpVx8l5eWWBABpUAWAVi3ZTOW43hJUBt633ib+NAwlm2zsLCwCEbCSGvekt6iQkrJvv01rF3veYjSgpf+Osal89MLavfZxrEqG8sSeaiCmRm9QLTWhtRM3p0M2I6gotIGSu86lVF7nscJkjeLwRc5ZCAUmpumMSit5j2dEyOkpHX7VhzXLfXYm7DSJJM5giFwAxCJwPrWIFKKBSWqMRAMSta1BUGYwmdjo1nmlxRKweiNrDd/Y7BtaO+IYM8m+3n9BQKC1rZQwQOUguGhLLdaEYDR69cLbi2lZMfnHyRWV4vKKe9P5RBSsv3hfXQ93r1kCGgNly+lyGXnVnDz1hDbdsYIBOaGjkQs9uyN0dziYvITTiY1Vy6nFjiVEDBwKcXMTW8HMgY6NoXY1RUjUiELSb8yarH3c1W0rAsWri8mEoqB/mSRxqIQOHmkh64vdxOORdFas/G+XTz9i5/y8VuHiY+MEK6soHXHNrY+uBcn4KJyuUV3AiFgoH+Gy/0RWttdtIZgWPDQo95dXiKukBJq6mzq6ufcVQjB6f8kGR5Mz0tuXn/DQ2lOnpjh3j2R/KkVHtgXo3NzhLEbGYSA2nqHmlqnsPrGCPqOJxkfyywP4OyHvRz5+wEe/uZXC4eazj330LF7p5cYpcR2HSZujPH2n55n75NPEI5W5hUWA0jNKN5+PUE4vIKVTQ4677rNLQ7NLS7k74mMnqsNLpxL897hiZKHIqUMPe9OEI1ZtHcEEcIgJTQ02jTe5eQnbPKnVdBK0NebpPfDiZKXWdbdldEfLxxA0X/iJCqXpX51E8FwCIREIAq3QYMX+vnbL3/NxY9OsLv7EWzHG3hk4BOOvfLGglrBu+JSXLmcQVqSigoLxxVFQrSGqUlN77Ek77yZ8M75JVK7EJBJawb6U2SzgmjMxg2Iou1VKRgfVfQcmabncGLRW2FR6qeyxhiklKzp3MCmrl2samslGAmTnJxi4PQZ+t45ymD/AJVVMbY8eD9OIOBtcdeHONVzDFPiMGTM7I2Oy+qWIHX1LuGwFzrT0zlGhjJ8ciXN2I10vqZnSSt8L1DrsqYlSEOjW7jwmJpUDOW/F4iPL/29gCj/VvgzbmUAfgvw28oA/Bbgt5UB+C3AbysD8FuA31YG4LcAv60MwG8BflsZgN8C/LYyAL8F+G1lAH4L8Nv+C440Q67Vrkd7AAAAAElFTkSuQmCC" type="image/png">
+<!-- ↑ Título de la pestaña y descripción para Google y redes: se pueden editar.
+     ↓ Icono, tipografía (Google Fonts) y hoja de estilos: no tocar. -->
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=Newsreader:opsz,wght@6..72,400;6..72,500&display=swap" rel="stylesheet">
-<style>
-:root{--burgundy:oklch(0.28 0.09 25);--forest:oklch(0.22 0.03 155);--cream:oklch(0.96 0.014 85);--gold:oklch(0.73 0.13 76);--foreground:oklch(0.22 0.03 155)}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--cream);color:var(--foreground);font-family:"DM Sans",system-ui,sans-serif;overflow-x:hidden}
-a{color:inherit;text-decoration:none}
-.container{max-width:1400px;margin:0 auto;padding-left:1.5rem;padding-right:1.5rem}
-.label{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase}
-.serif{font-family:"Newsreader",Georgia,serif}
-.hero{background:var(--burgundy);color:var(--cream)}
-.header{display:flex;align-items:center;justify-content:space-between;padding-top:1.5rem;padding-bottom:1.5rem}
-.brand{height:5rem;width:auto;object-fit:contain}
-.partner-top{font-size:1.05rem;color:var(--gold);border-bottom:1px solid color-mix(in oklch,var(--gold) 40%,transparent);padding-bottom:.25rem;transition:.3s}
-.partner-top:hover{color:var(--cream);border-color:var(--gold)}
-.hero-main{padding-top:6rem;padding-bottom:8rem;text-align:center}
-.kicker{color:var(--gold)}
-h1{margin:1.75rem auto 0;max-width:72rem;font-family:"Newsreader",Georgia,serif;font-size:6.5rem;line-height:1.05;letter-spacing:-.02em;font-weight:400}
-.subtitle{margin:1.75rem auto 0;max-width:48rem;font-family:"Newsreader",Georgia,serif;font-size:1.875rem;line-height:1.25;color:color-mix(in oklch,var(--cream) 75%,transparent)}
-.social{background:var(--cream);padding:3.5rem 0 4rem}
-.social h2{margin:0 auto;max-width:1400px;padding:0 1.5rem;font-family:"Newsreader",Georgia,serif;font-size:1.875rem;font-weight:400;letter-spacing:-.01em}
-.marquee{position:relative;margin-top:2.5rem;overflow:hidden}
-.marquee-track{display:flex;width:max-content;gap:3.5rem;animation:marquee 70s linear infinite;will-change:transform}
-.marquee:hover .marquee-track{animation-play-state:paused}
-.logo-item{display:flex;height:5rem;width:14rem;flex:0 0 auto;align-items:center;justify-content:center;padding:0 1rem}
-.logo{max-height:3rem;max-width:100%;width:auto;object-fit:contain;opacity:.70}
-.logo.small{max-height:2.75rem}
-.logo.jpm{width:16rem;max-height:6rem}
-.logo.salesforce{max-height:4rem}
-.logo.balance{max-height:2.5rem}
-.logo.kreios{max-height:3.5rem}
-.logo.happy{max-height:2.25rem}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.why{background:var(--forest);color:var(--cream)}
-.why-inner{padding-top:6rem;padding-bottom:6rem}
-.why-grid{display:grid;grid-template-columns:9rem minmax(0,58rem);gap:3rem}
-.origin{color:color-mix(in oklch,var(--cream) 40%,transparent);margin:0}
-.why h2{margin:0;font-family:"Newsreader",Georgia,serif;font-size:3rem;line-height:1.2;letter-spacing:-.02em;font-weight:400}
-.copy{margin-top:2.5rem;display:grid;gap:1.5rem}
-.copy p{margin:0;font-size:1.125rem;line-height:1.65;color:color-mix(in oklch,var(--cream) 80%,transparent)}
-.final-lines{margin-top:3rem;padding-top:2.5rem;border-top:1px solid color-mix(in oklch,var(--cream) 15%,transparent);display:grid;gap:1rem}
-.final-lines p{margin:0;font-family:"Newsreader",Georgia,serif;font-size:1.875rem;line-height:1.35}
-.final-lines p:last-child{color:var(--gold)}
-.cta{background:var(--burgundy);color:var(--cream)}
-.cta-inner{display:flex;align-items:center;justify-content:center;padding-top:6rem;padding-bottom:6rem}
-.cta-link{font-family:"Newsreader",Georgia,serif;font-size:4.5rem;line-height:1;letter-spacing:-.02em;border-bottom:1px solid color-mix(in oklch,var(--gold) 40%,transparent);padding-bottom:.75rem;transition:.5s}
-.cta-link:hover{color:var(--gold);border-color:var(--gold)}
-footer{background:var(--burgundy);color:var(--cream)}
-.footer-inner{border-top:1px solid color-mix(in oklch,var(--cream) 10%,transparent);padding-top:1.5rem;padding-bottom:1.5rem}
-.footer-inner p{margin:0;color:color-mix(in oklch,var(--cream) 40%,transparent)}
-.reveal{opacity:0;transform:translateY(14px);transition:opacity 900ms cubic-bezier(.22,1,.36,1),transform 900ms cubic-bezier(.22,1,.36,1)}
-.reveal.visible{opacity:1;transform:none}
-@media(max-width:1023px){
-.container{padding-left:2.5rem;padding-right:2.5rem}.brand{height:4rem}h1{font-size:4.5rem}.subtitle{font-size:1.5rem}.hero-main{padding-top:5rem;padding-bottom:7rem}.why-grid{display:block}.why-main{margin-top:1.5rem}.cta-link{font-size:3.75rem}
-}
-@media(max-width:639px){
-.container{padding-left:1.5rem;padding-right:1.5rem}.header{padding-top:1.25rem;padding-bottom:1.25rem}.brand{height:3.5rem}.partner-top{font-size:.85rem}.hero-main{padding-top:3.5rem;padding-bottom:5rem}h1{font-size:3rem}.subtitle{font-size:1.25rem}.social{padding:3.5rem 0}.social h2{font-size:1.5rem}.marquee-track{gap:1.5rem}.logo-item{width:11rem}.why-inner{padding-top:4rem;padding-bottom:4rem}.why h2{font-size:2rem}.copy{margin-top:2rem;gap:1.25rem}.copy p{font-size:1rem}.final-lines{margin-top:3rem;padding-top:2.5rem}.final-lines p{font-size:1.5rem}.cta-inner{padding-top:4rem;padding-bottom:4rem}.cta-link{font-size:2.25rem}
-}
-@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.marquee-track{animation:none}.reveal{opacity:1;transform:none;transition:none}}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<section class="hero">
-  <header class="container header">
-    <img class="brand" src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/c8a9807a-58d2-48a5-817c-4f961789ae0c/a30mark2.png" alt="anza30">
-    <a class="label partner-top" href="#">Partner Area ↗</a>
-  </header>
-  <div class="container hero-main">
-    <p class="label kicker">anza30</p>
-    <h1>Built to back the ambitious.</h1>
-    <p class="subtitle">Bringing together exceptional founders and investors to back the most ambitious builders.</p>
-  </div>
-</section>
-<section class="social">
-  <div class="reveal"><h2>Our partners have built and worked at</h2></div>
-  <div class="marquee" aria-label="Partner companies">
-    <div class="marquee-track">
-      <div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/3d664adc-daf2-4ba1-878d-9f7816eb878a/amazon.png" alt="Amazon logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/d459a6ca-51f5-4214-aaef-d56ca8985bcc/bain.png" alt="Bain & Company logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/e646b8ff-e8a0-4334-b1d9-8e2fe0800f67/bcg.png" alt="BCG logo" class="logo small" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/e0376314-28de-4d36-b4cb-7871ac5d4e93/jpmorgan.png" alt="JPMorgan logo" class="logo jpm" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/8dee4e75-9bb7-403d-a381-4c96aefcb8ae/oracle.png" alt="Oracle logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/3bc34c1a-e28b-4760-b67f-9920e3a1a0d2/salesforce.png" alt="Salesforce logo" class="logo salesforce" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/82835de9-daf8-43c5-ab97-c78520c98a5a/celonis.png" alt="Celonis logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/7bbe5a0f-3b3b-4340-9522-8e8e1b3e39fe/kinnek.png" alt="Kinnek logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/8f241cde-4b7d-4580-b050-718699af75ae/balance.png" alt="Balance Phone logo" class="logo balance" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/4280c556-c6e6-41c9-b41f-c1a90c7cfaf8/icogn.png" alt="ICOGN logo" class="logo small" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/e4b60aeb-66e5-49c9-8b0a-1ea323ce1e61/convexity.png" alt="Convexity logo" class="logo small" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/5eca3c44-5a33-4bc5-aef8-e974ff864706/kreios.png" alt="Kreios Space logo" class="logo kreios" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/dd23faad-93ac-48b7-9dfe-d05b95fc7e28/builtineurope.png" alt="Built in Europe logo" class="logo salesforce" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/45699883-f0cb-4d24-89e7-0a8ee266a602/happyrobot.png" alt="HappyRobot logo" class="logo happy" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/baea9de5-266a-406a-a65f-7d2b5cf701ee/traza.png" alt="Traza logo" class="logo balance" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/3c82655e-c2f5-4ef2-908d-b62e6536043b/shinkei.png" alt="Shinkei logo" class="logo balance" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/cd724030-26b7-426f-943d-35ee782e656d/whiterabbit.png" alt="White Rabbit logo" class="logo kreios" loading="lazy" decoding="async"></div>
-      <div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/3d664adc-daf2-4ba1-878d-9f7816eb878a/amazon.png" alt="Amazon logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/d459a6ca-51f5-4214-aaef-d56ca8985bcc/bain.png" alt="Bain & Company logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/e646b8ff-e8a0-4334-b1d9-8e2fe0800f67/bcg.png" alt="BCG logo" class="logo small" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/e0376314-28de-4d36-b4cb-7871ac5d4e93/jpmorgan.png" alt="JPMorgan logo" class="logo jpm" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/8dee4e75-9bb7-403d-a381-4c96aefcb8ae/oracle.png" alt="Oracle logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/3bc34c1a-e28b-4760-b67f-9920e3a1a0d2/salesforce.png" alt="Salesforce logo" class="logo salesforce" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/82835de9-daf8-43c5-ab97-c78520c98a5a/celonis.png" alt="Celonis logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/7bbe5a0f-3b3b-4340-9522-8e8e1b3e39fe/kinnek.png" alt="Kinnek logo" class="logo " loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/8f241cde-4b7d-4580-b050-718699af75ae/balance.png" alt="Balance Phone logo" class="logo balance" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/4280c556-c6e6-41c9-b41f-c1a90c7cfaf8/icogn.png" alt="ICOGN logo" class="logo small" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/e4b60aeb-66e5-49c9-8b0a-1ea323ce1e61/convexity.png" alt="Convexity logo" class="logo small" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/5eca3c44-5a33-4bc5-aef8-e974ff864706/kreios.png" alt="Kreios Space logo" class="logo kreios" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/dd23faad-93ac-48b7-9dfe-d05b95fc7e28/builtineurope.png" alt="Built in Europe logo" class="logo salesforce" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/45699883-f0cb-4d24-89e7-0a8ee266a602/happyrobot.png" alt="HappyRobot logo" class="logo happy" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/baea9de5-266a-406a-a65f-7d2b5cf701ee/traza.png" alt="Traza logo" class="logo balance" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/3c82655e-c2f5-4ef2-908d-b62e6536043b/shinkei.png" alt="Shinkei logo" class="logo balance" loading="lazy" decoding="async"></div>
-<div class="logo-item"><img src="https://anza30-landingpage.lovable.app/__l5e/assets-v1/cd724030-26b7-426f-943d-35ee782e656d/whiterabbit.png" alt="White Rabbit logo" class="logo kreios" loading="lazy" decoding="async"></div>
-    </div>
-  </div>
-</section>
-<section class="why">
-  <div class="container why-inner">
-    <div class="why-grid">
-      <div class="reveal"><p class="label origin">Origin</p></div>
-      <div class="why-main">
-        <div class="reveal"><h2>Why we built anza30.</h2></div>
-        <div class="copy">
-          <p class="reveal">Through Kinnek, Built in Europe, and our own networks, we kept finding ourselves close to ambitious founders building across Spain and the US.</p>
-          <p class="reveal" style="transition-delay:40ms">We were seeing strong companies early. We were sharing feedback, making introductions, and helping where our experience or network could be useful. Over time, we saw that this could actually make a difference.</p>
-          <p class="reveal" style="transition-delay:80ms">But individually, we could not access, evaluate, or invest in every strong deal we were seeing.</p>
-          <p class="reveal" style="transition-delay:120ms">So we built anza30: a way to invest together in the opportunities already around us.</p>
-          <p class="reveal" style="transition-delay:160ms">anza30 is not a fund where people just wire money and wait. Every partner is expected to bring something to the table: capital, dealflow, and relevant experience.</p>
-          <p class="reveal" style="transition-delay:200ms">The goal is simple: back great founders, create upside together, and build a serious community of founders and investors from our generation.</p>
-        </div>
-        <div class="final-lines">
-          <p class="reveal">Anza was the first Spaniard to arrive in San Francisco.</p>
-          <p class="reveal" style="transition-delay:120ms">Now we are 30 partners on the journey.</p>
-        </div>
+<!--
+  ╔════════════════════════════════════════════════════════════════════════════╗
+  ║  ANZA(30) — GUÍA RÁPIDA DE ESTE ARCHIVO                                    ║
+  ╚════════════════════════════════════════════════════════════════════════════╝
+  Esta página tiene 4 bloques, en este orden. Busca (Ctrl/Cmd + F) el título
+  entre comillas para saltar a cada uno:
+
+    1. "MENÚ"                  Logo y enlaces de arriba.
+    2. "HERO"                  Las 4 pantallas del principio que cambian con el scroll.
+                               Sus textos están en los bloques <div class="scene …">.
+    3. "THE PARTNER NETWORK"   La cuadrícula de partners. Ahí mismo se explica cómo
+                               cambiar nombres, fotos y bios, y cómo añadir el nº 30.
+    4. "CIERRE / CONTACTO"     Frases finales y botón con el email de contacto.
+
+  Carpetas:
+    index.html              este archivo (todo el contenido y los textos)
+    css/styles.css          diseño: colores, tamaños, versión tablet y móvil
+    js/main.js              animaciones e interacciones (no hace falta tocarlo)
+    assets/img/partners/    fotos de los partners
+    assets/img/             fondos e imágenes generales
+    LEEME.txt               instrucciones de publicación y mantenimiento
+
+  Los textos se pueden editar directamente. Lo que va entre < y > son etiquetas:
+  cambia solo el texto que hay entre ellas, y guarda el archivo como UTF-8.
+-->
+<div class="page no-js">
+
+<!-- ===================== FORMAS (NO TOCAR) =====================
+     Dibujos que usa la página: la "A" especial de los nombres, las 30 máscaras
+     de las fotos (blob-01 … blob-30) y sus líneas de fondo (lines-01 … lines-30).
+     Son líneas muy largas de números: no hay nada que editar aquí. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="glyph-a" viewBox="0 0 82 70"><path d="M58.14 34.13C58.88 33.88 59.63 33.62 60.38 33.33C63.70 32.13 67.13 30.37 70.67 28.07C74.28 25.77 78.05 22.76 82 19.02L82 25.14C78.56 28.71 74.76 31.78 70.59 34.37C67.32 36.44 63.83 38.14 60.10 39.47L71.34 70L63.95 70L53.58 41.35C49.63 42.21 45.43 42.64 41 42.64C37.24 42.64 33.65 42.33 30.24 41.71L20.00 70L12.61 70L23.67 40.07C19.28 38.66 15.22 36.76 11.49 34.37C7.31 31.78 3.48 28.71 0 25.14L0 19.02C3.94 22.76 7.71 25.77 11.32 28.07C14.86 30.37 18.29 32.13 21.61 33.33C22.97 33.85 24.32 34.30 25.66 34.68L38.48 0L45.57 0L58.14 34.13ZM32.29 36.04C35.19 36.42 38.09 36.61 41 36.61C44.20 36.61 47.40 36.38 50.60 35.92C50.92 35.87 51.24 35.82 51.56 35.77L41.98 9.29L32.29 36.04Z"/></symbol>
+    <!-- Máscaras de las fotos (blob-01 … blob-30) -->
+    <clipPath id="blob-01" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0.4983 0.867 -0.867 0.4983 437.09 -135.05)" d="M268.0 0 C364.3 0.0 442.4 60.4 442.4 135.0 C442.4 170.5 424.8 202.7 395.8 226.8 C514.5 253.2 600 327.2 600 414.3 C600 523.5 465.6 612.1 300 612.1 C134.3 612.1 0 523.5 0 414.3 C0 338.9 64.0 273.3 158.2 239.9 C118.8 215.2 93.5 177.4 93.5 135.0 C93.5 60.4 171.6 0 268.0 0 Z"/></clipPath>
+    <clipPath id="blob-02" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.9659 -0.2589 0.2589 -0.9659 483.56 683.85)" d="M67.9 198.6 C163.5 42.7 324.4 -38.2 427.4 17.7 C510.6 62.9 530.5 183.7 484.7 310.6 C512.0 298.3 538.9 296.5 560.3 308.0 C608.0 333.4 609.8 415.1 564.4 490.4 C519.0 565.6 443.6 606.0 396.0 580.5 C371.0 567.1 358.6 538.3 359.0 503.0 C268.6 589.1 158.6 624.2 81.3 582.2 C-21.6 526.2 -27.6 354.5 67.9 198.6 Z"/></clipPath>
+    <clipPath id="blob-03" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.4983 0.867 0.867 0.4983 192.51 -140.08)" d="M109.7 120.2 C221.4 -2.1 371.0 -36.8 443.7 42.8 C465.8 66.9 478.2 98.8 481.8 135.0 C547.0 110.7 606.7 115.4 642.5 154.7 C707.3 225.6 669.1 382.5 557.2 505.1 C445.3 627.6 302.1 669.5 237.3 598.5 C218.8 578.2 208.7 550.8 206.3 519.2 C140.2 538.8 78.4 529.2 39.1 486.1 C-33.6 406.4 -1.9 242.6 109.7 120.2 Z"/></clipPath>
+    <clipPath id="blob-04" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(1 0 -0 1 0 0)" d="M2.8 279.3 C20.8 114.1 120.3 -10.6 224.9 0.7 C280.8 6.7 326.9 50.4 354.9 114.9 C380.1 103.9 407.2 99.2 434.9 102.2 C539.6 113.6 612.6 230.8 598.1 364.0 C583.6 497.1 487.0 595.9 382.3 584.5 C347.4 580.7 316.1 565.2 290.3 541.2 C252.3 582.1 206.5 604.3 159.6 599.2 C55.0 587.9 -15.2 444.6 2.8 279.3 Z"/></clipPath>
+    <clipPath id="blob-05" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(1 0 -0 1 0 0)" d="M300 0 C465.6 0 600 76.2 600 170.2 C600 222.2 558.9 268.7 494.2 300 C558.9 331.2 600 377.7 600 429.7 C600 523.7 465.6 600 300 600 C134.3 600 0 523.7 0 429.7 C0.0 377.7 41.0 331.2 105.7 300 C41.0 268.7 0.0 222.2 0 170.2 C0 76.2 134.3 0 300 0 Z"/></clipPath>
+    <clipPath id="blob-06" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.4983 -0.867 0.867 -0.4983 174.68 740.14)" d="M285.2 0 C388.9 0.0 472.9 62.4 472.9 139.5 C472.9 171.1 458.8 200.3 434.9 223.7 C535.8 255.8 605.3 323.4 605.3 401.6 C605.3 510.8 469.8 599.4 302.6 599.4 C135.5 599.4 0.0 510.8 0 401.6 C0 330.0 58.1 267.3 145.3 232.6 C115.5 207.9 97.4 175.3 97.4 139.5 C97.4 62.4 181.5 0 285.2 0 Z"/></clipPath>
+    <clipPath id="blob-07" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-1 0 -0 -1 600 600)" d="M278.4 5.4 C442.9 -16.8 585.2 31.4 596.3 113.3 C603.6 167.1 552.4 222.0 469.8 259.7 C547.8 291.8 599.9 350.1 599.9 416.7 C599.9 517.9 479.4 600 330.7 600 C182.0 600 61.4 517.9 61.4 416.7 C61.4 370.0 87.1 327.3 129.4 295.0 C56.9 277.1 7.0 241.1 0.6 194.0 C-10.4 112.1 113.9 27.7 278.4 5.4 Z"/></clipPath>
+    <clipPath id="blob-08" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0.9659 -0.2589 -0.2589 -0.9659 125.23 688.92)" d="M72.7 209.5 C172.2 47.2 336.3 -38.9 439.3 17.0 C524.7 63.5 541.3 193.1 487.6 328.6 C512.7 319.5 537.6 319.4 558.1 330.4 C605.7 355.8 611.2 431.5 570.3 499.3 C529.4 567.2 457.6 601.5 410.0 576.0 C386.5 563.5 373.3 538.7 370.8 508.8 C275.9 605.8 159.1 648.1 79.1 604.6 C-23.8 548.6 -26.6 371.7 72.7 209.5 Z"/></clipPath>
+    <clipPath id="blob-09" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0 1 -1 0 600 0)" d="M300 0 C465.6 0 600 76.2 600 170.2 C600 222.2 558.9 268.7 494.2 300 C558.9 331.2 600 377.7 600 429.7 C600 523.7 465.6 600 300 600 C134.3 600 0 523.7 0 429.7 C0.0 377.7 41.0 331.2 105.7 300 C41.0 268.7 0.0 222.2 0 170.2 C0 76.2 134.3 0 300 0 Z"/></clipPath>
+    <clipPath id="blob-10" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0.4983 -0.867 -0.867 -0.4983 381.36 739.51)" d="M124.1 114.9 C250.2 -1.7 418.6 -35.0 500.3 40.4 C544.2 81.1 554.1 145.0 534.1 213.6 C568.4 212.1 598.1 220.4 618.9 239.6 C677.5 293.9 642.2 414.4 540.0 508.9 C437.9 603.5 307.6 636.1 249.0 581.9 C226.8 561.3 218.1 531.1 221.4 496.4 C150.9 511.9 85.8 501.9 43.7 462.9 C-37.9 387.4 -1.9 231.5 124.1 114.9 Z"/></clipPath>
+    <clipPath id="blob-11" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.9968 0.0797 -0.0797 -0.9968 622.83 575.1)" d="M89.5 89.4 C180.6 -1.4 302.2 -27.3 361.1 31.5 C385.7 56.0 395.5 91.4 392.0 131.0 C454.4 119.8 513.6 133.1 553.8 173.2 C631.3 250.7 608.9 398.6 503.6 503.7 C398.3 608.9 250.2 631.3 172.6 553.9 C132.3 513.6 119.0 454.1 130.4 391.6 C91.2 394.9 56.0 385.0 31.6 360.6 C-27.3 301.7 -1.4 180.3 89.5 89.4 Z"/></clipPath>
+    <clipPath id="blob-12" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(1 0 -0 1 0 0)" d="M2.8 279.3 C20.8 114.1 120.3 -10.6 224.9 0.7 C280.4 6.7 326.2 49.8 354.4 113.6 C378.3 103.2 403.9 98.9 430.1 101.7 C532.1 112.8 603.0 229.7 588.5 362.9 C573.9 496.1 479.5 595.0 377.5 583.9 C344.1 580.3 314.1 565.4 289.3 542.3 C251.5 582.5 206.1 604.3 159.6 599.2 C55.0 587.9 -15.2 444.6 2.8 279.3 Z"/></clipPath>
+    <clipPath id="blob-13" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.9968 0.0797 -0.0797 -0.9968 622.89 575.09)" d="M89.5 89.4 C180.6 -1.4 302.2 -27.3 361.1 31.5 C385.7 56.0 395.5 91.4 392.0 131.0 C454.4 119.8 513.6 133.1 553.8 173.2 C631.3 250.7 608.9 398.6 503.6 503.7 C398.3 608.9 250.2 631.3 172.6 553.9 C132.3 513.6 119.0 454.1 130.4 391.6 C91.2 394.9 56.0 385.0 31.6 360.6 C-27.3 301.7 -1.4 180.3 89.5 89.4 Z"/></clipPath>
+    <clipPath id="blob-14" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0 1 -1 0 600 0)" d="M300 0 C465.6 0 600 76.2 600 170.2 C600 222.2 558.9 268.7 494.2 299.9 C558.9 331.2 600 377.7 600 429.7 C600 523.7 465.6 599.9 300 599.9 C134.3 599.9 0 523.7 0 429.7 C0.0 377.7 41.0 331.2 105.7 299.9 C41.0 268.7 0 222.2 0 170.2 C0.0 76.2 134.3 0 300 0 Z"/></clipPath>
+    <clipPath id="blob-15" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.4983 -0.867 0.867 -0.4983 214.01 739.61)" d="M118.3 109.5 C240.6 -3.5 405.9 -34.0 487.6 41.5 C528.4 79.3 540.6 136.5 527.2 198.3 C568.0 193.0 603.3 200.2 626.6 221.8 C685.2 276.0 645.9 400.3 538.7 499.4 C431.6 598.6 297.3 635.0 238.7 580.8 C215.2 559.1 207.4 526.1 213.5 488.0 C146.9 500.1 85.5 488.8 44.8 451.2 C-36.7 375.6 -3.8 222.6 118.3 109.5 Z"/></clipPath>
+    <clipPath id="blob-16" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.4983 -0.867 0.867 -0.4983 217.54 742.02)" d="M119.0 110.2 C243.9 -5.3 414.7 -34.7 500.4 44.5 C554.6 94.7 561.8 176.3 528.2 258.8 C551.4 262.4 572.0 271.4 587.9 286.1 C646.5 340.3 620.9 452.0 530.6 535.5 C440.4 619.0 319.8 642.7 261.2 588.5 C237.9 567.0 227.9 536.4 230.0 502.2 C158.7 515.8 92.2 503.8 48.1 463.0 C-37.5 383.7 -5.7 225.7 119.0 110.2 Z"/></clipPath>
+    <clipPath id="blob-17" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.9968 0.0797 -0.0797 -0.9968 616.37 576.06)" d="M89.6 89.5 C178.0 1.2 293.6 -26.4 347.8 27.6 C368.0 47.8 376.8 76.6 375.3 109.4 C443.3 93.9 507.7 105.7 550.1 148.0 C629.2 227.0 601.9 382.4 489.1 495.1 C376.3 607.7 220.7 635.0 141.6 556.0 C97.8 512.3 86.6 445.2 104.5 374.9 C73.8 375.4 46.8 366.5 27.6 347.3 C-26.4 293.2 1.2 177.8 89.6 89.5 Z"/></clipPath>
+    <clipPath id="blob-18" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.9659 -0.2589 0.2589 -0.9659 483.14 683.84)" d="M67.9 198.6 C163.5 42.7 324.4 -38.2 427.4 17.7 C510.6 62.9 530.5 183.6 484.7 310.5 C512.2 298.1 539.2 296.1 560.6 307.5 C608.2 333.0 609.7 415.4 563.8 491.5 C517.9 567.6 442.1 608.6 394.4 583.1 C369.2 569.6 356.9 540.2 357.8 504.2 C267.5 589.4 158.2 624.0 81.3 582.2 C-21.6 526.2 -27.6 354.5 67.9 198.6 Z"/></clipPath>
+    <clipPath id="blob-19" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(1 0 -0 1 0 6)" d="M2.8 276.6 C20.8 112.9 120.3 -10.5 224.9 0.7 C280.8 6.7 326.9 49.9 354.9 113.7 C380.1 102.9 407.2 98.2 434.9 101.2 C539.6 112.5 612.6 228.5 598.1 360.3 C583.6 492.2 487.0 589.9 382.3 578.6 C347.4 574.9 316.1 559.5 290.3 535.8 C252.3 576.3 206.5 598.3 159.6 593.2 C55.0 582.0 -15.2 440.2 2.8 276.6 Z"/></clipPath>
+    <clipPath id="blob-20" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(1 0 -0 1 0 0)" d="M300 0 C465.6 0 600 76.2 600 170.2 C600 222.2 558.9 268.7 494.2 300 C558.9 331.2 600 377.7 600 429.7 C600 523.7 465.6 600 300 600 C134.3 600 0 523.7 0 429.7 C0.0 377.7 41.0 331.2 105.7 300 C41.0 268.7 0.0 222.2 0 170.2 C0 76.2 134.3 0 300 0 Z"/></clipPath>
+    <clipPath id="blob-21" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.4983 -0.867 0.867 -0.4983 181.97 765.55)" d="M304.8 0 C403.7 0.0 483.9 62.6 483.9 139.8 C483.9 167.7 473.4 193.6 455.4 215.4 C562.9 247.2 637.1 315.3 637.1 394.1 C637.1 503.3 494.5 591.8 318.5 591.8 C142.6 591.8 0 503.3 0 394.1 C0 320.6 64.5 256.5 160.3 222.4 C138.6 199.2 125.8 170.7 125.8 139.8 C125.8 62.6 205.9 0 304.8 0 Z"/></clipPath>
+    <clipPath id="blob-22" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-1 0 -0 -1 600 600)" d="M278.4 5.4 C442.9 -16.8 585.2 31.4 596.3 113.3 C603.6 167.1 552.4 222.0 469.8 259.7 C547.8 291.8 599.9 350.1 599.9 416.7 C599.9 517.9 479.4 600.0 330.7 600.0 C182.0 600.0 61.4 517.9 61.4 416.7 C61.4 370.0 87.1 327.3 129.4 295.0 C56.9 277.1 7.0 241.1 0.6 194.0 C-10.4 112.1 113.9 27.7 278.4 5.4 Z"/></clipPath>
+    <clipPath id="blob-23" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0.9659 -0.2589 -0.2589 -0.9659 127.67 687.56)" d="M73.1 211.1 C173.6 47.1 340.2 -39.5 445.1 17.5 C531.3 64.4 549.0 193.8 496.8 329.5 C517.5 324.5 537.7 325.9 554.7 335.0 C602.4 360.5 607.9 436.2 567.0 504.0 C526.1 571.8 454.3 606.2 406.6 580.7 C385.9 569.6 373.1 549.0 368.7 523.6 C274.2 615.6 160.1 654.3 81.0 611.3 C-23.8 554.2 -27.3 375.1 73.1 211.1 Z"/></clipPath>
+    <clipPath id="blob-24" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0 1 -1 0 600 0)" d="M300 0 C465.6 0 600 76.2 600 170.2 C600 222.2 558.9 268.7 494.2 300 C558.9 331.2 600 377.7 600 429.7 C600 523.7 465.6 600 300 600 C134.3 600 0 523.7 0 429.7 C0.0 377.7 41.0 331.2 105.7 300 C41.0 268.7 0.0 222.2 0 170.2 C0 76.2 134.3 0 300 0 Z"/></clipPath>
+    <clipPath id="blob-25" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0 -1 -1 -0 600.99 596.67)" d="M122.9 113.8 C247.6 -1.5 413.8 -34.6 494.2 39.7 C539.5 81.6 547.9 148.7 524.4 219.9 C540.9 224 555.3 231.3 567.0 242.0 C624.2 295.0 590.8 411.8 492.3 502.9 C393.8 594.1 267.6 625.0 210.3 572.0 C190.1 553.3 181.2 526.6 182.5 495.8 C126.9 501.2 77.1 489.0 42.9 457.3 C-37.4 382.9 -1.6 229.1 122.9 113.8 Z"/></clipPath>
+    <clipPath id="blob-26" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.9968 0.0797 -0.0797 -0.9968 621.83 577.1)" d="M89.5 89.4 C180.6 -1.4 302.2 -27.3 361.1 31.5 C386.1 56.4 395.8 92.5 391.9 132.7 C453.9 121.9 512.7 135.2 552.7 175.2 C630.2 252.6 607.7 400.5 502.4 505.7 C397.2 610.8 249.0 633.2 171.5 555.8 C130.7 515.1 117.6 454.9 129.6 391.6 C90.7 394.7 55.8 384.8 31.6 360.6 C-27.3 301.7 -1.4 180.3 89.5 89.4 Z"/></clipPath>
+    <clipPath id="blob-27" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(1 0 -0 1 0 0)" d="M2.8 279.3 C20.8 114.1 120.3 -10.6 224.9 0.7 C280.8 6.7 326.9 50.4 354.9 114.9 C380.1 103.9 407.2 99.2 434.9 102.2 C539.6 113.6 612.6 230.8 598.1 364.0 C583.6 497.1 487.0 595.9 382.3 584.5 C347.4 580.7 316.1 565.2 290.3 541.2 C252.3 582.1 206.5 604.3 159.6 599.2 C55.0 587.9 -15.2 444.6 2.8 279.3 Z"/></clipPath>
+    <clipPath id="blob-28" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(0.4983 0.867 -0.867 0.4983 387.68 -173.76)" d="M345.1 0 C461.0 0 555.0 61.9 555.0 138.4 C555.0 170.3 538.6 199.7 511.1 223.1 C602.3 254.7 662.7 309.6 662.7 372.1 C662.7 470.0 514.3 549.4 331.3 549.4 C148.3 549.4 0.0 470.0 0 372.1 C0 305.1 69.4 246.7 171.8 216.6 C148.7 194.3 135.1 167.4 135.1 138.4 C135.1 61.9 229.1 0 345.1 0 Z"/></clipPath>
+    <clipPath id="blob-29" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.2707 0.9627 -0.9627 -0.2707 658.07 114.42)" d="M274.1 0 C425.5 0 548.3 76.5 548.3 170.9 C548.3 209.0 528.3 244.2 494.4 272.6 C529.3 305.9 549.9 347.5 549.9 392.5 C549.9 502.3 426.8 591.4 274.9 591.4 C123.1 591.4 0 502.3 0 392.5 C0 347.8 20.3 306.5 54.7 273.3 C20.3 244.8 0 209.3 0 170.9 C0 76.5 122.7 0.0 274.1 0 Z"/></clipPath>
+    <clipPath id="blob-30" clipPathUnits="objectBoundingBox"><path transform="scale(0.0017) matrix(-0.4983 0.867 0.867 0.4983 191.13 -139.53)" d="M105.7 115.2 C217.4 -6.4 370.9 -36.5 448.5 48.0 C463.7 64.6 474.9 84.3 482.2 106.3 C537.5 96.1 587.5 107.9 620.8 144.2 C692.6 222.4 659.6 385.1 547.2 507.6 C434.8 630.1 285.5 666.0 213.7 587.8 C200.2 573.1 190.4 555.3 184.1 535.4 C129.2 541.7 79.0 526.8 44.0 488.8 C-33.5 404.2 -5.9 236.9 105.7 115.2 Z"/></clipPath>
+    <!-- Líneas de fondo de cada tarjeta (lines-01 … lines-30) -->
+    <symbol id="lines-01" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="134.995" cy="172.805" rx="134.995" ry="172.805" transform="matrix(0.87 -0.5 0.5 0.87 250.38 81.69)"/><ellipse cx="197.765" cy="294.255" rx="197.765" ry="294.255" transform="matrix(0.87 -0.5 0.5 0.87 -93 171)"/></g></symbol>
+    <symbol id="lines-02" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="212.225" cy="330.03" rx="212.225" ry="330.03" transform="matrix(-0.72 -0.69 0.73 -0.69 229.12 702.25)"/><ellipse cx="97.84" cy="159.115" rx="97.84" ry="159.115" transform="matrix(-0.73 -0.68 0.72 -0.69 93.42 308.19)"/></g></symbol>
+    <symbol id="lines-03" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="195.32" cy="300.105" rx="195.32" ry="300.105" transform="matrix(0.3 0.95 0.98 -0.21 -51.36 79.48)"/><ellipse cx="170.28" cy="300.51" rx="170.28" ry="300.51" transform="matrix(0.3 0.95 0.98 -0.21 -47.42 327.96)"/></g></symbol>
+    <symbol id="lines-04" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="301.055" cy="190.635" rx="301.055" ry="190.635" transform="matrix(0.11 -0.99 0.99 0.11 -29.82 578.68)"/><ellipse cx="242.555" cy="190.635" rx="242.555" ry="190.635" transform="matrix(0.11 -0.99 0.99 0.11 192.83 563.92)"/></g></symbol>
+    <symbol id="lines-05" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(0 -1 1 0 0 340.51)"/><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(0 -1 1 0 0 600)"/></g></symbol>
+    <symbol id="lines-06" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="139.55" cy="187.755" rx="139.55" ry="187.755" transform="matrix(-0.87 0.5 -0.5 -0.87 367.65 516.19)"/><ellipse cx="197.76" cy="300.665" rx="197.76" ry="300.665" transform="matrix(-0.87 0.5 -0.5 -0.87 693.78 440.43)"/></g></symbol>
+    <symbol id="lines-07" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="149.645" cy="300.555" rx="149.645" ry="300.555" transform="matrix(0.13 0.99 -0.99 0.13 579.21 257.65)"/><ellipse cx="183.285" cy="269.255" rx="183.285" ry="269.255" transform="matrix(0 1 -1 0 538.51 0)"/></g></symbol>
+    <symbol id="lines-08" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="212.235" cy="344.615" rx="212.235" ry="344.615" transform="matrix(0.72 -0.69 -0.73 -0.69 391.34 704.88)"/><ellipse cx="97.84" cy="142.21" rx="97.84" ry="142.21" transform="matrix(0.73 -0.68 -0.72 -0.69 505.67 290.5)"/></g></symbol>
+    <symbol id="lines-09" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(1 0 0 1 259.49 0)"/><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(1 0 0 1 0 0)"/></g></symbol>
+    <symbol id="lines-10" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="201.42" cy="309.655" rx="201.42" ry="309.655" transform="matrix(-0.22 -0.98 -0.96 0.3 641.03 482.44)"/><ellipse cx="142.035" cy="251.97" rx="142.035" ry="251.97" transform="matrix(-0.22 -0.98 -0.96 0.3 515.23 224.6)"/></g></symbol>
+    <symbol id="lines-11" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="148.51" cy="235.235" rx="148.51" ry="235.235" transform="matrix(-0.76 -0.65 0.65 -0.76 368.49 670.64)"/><ellipse cx="198.38" cy="269.35" rx="198.38" ry="269.35" transform="matrix(-0.76 -0.65 0.65 -0.76 207.99 574.98)"/></g></symbol>
+    <symbol id="lines-12" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="301.055" cy="190.635" rx="301.055" ry="190.635" transform="matrix(0.11 -0.99 0.99 0.11 -29.82 578.67)"/><ellipse cx="242.555" cy="185.775" rx="242.555" ry="185.775" transform="matrix(0.11 -0.99 0.99 0.11 192.82 563.92)"/></g></symbol>
+    <symbol id="lines-13" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="150.92" cy="230.615" rx="150.92" ry="230.615" transform="matrix(-0.76 -0.65 0.65 -0.76 375.28 670.15)"/><ellipse cx="198.38" cy="269.35" rx="198.38" ry="269.35" transform="matrix(-0.76 -0.65 0.65 -0.76 208.06 574.94)"/></g></symbol>
+    <symbol id="lines-14" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(1 0 0 1 259.49 0)"/><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(1 0 0 1 0 0)"/></g></symbol>
+    <symbol id="lines-15" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="200.3" cy="301.615" rx="200.3" ry="301.615" transform="matrix(0.22 -0.98 0.96 0.3 -37.9 490.82)"/><ellipse cx="144.54" cy="264.285" rx="144.54" ry="264.285" transform="matrix(0.22 -0.98 0.96 0.3 60.82 226.94)"/></g></symbol>
+    <symbol id="lines-16" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="209.135" cy="308.095" rx="209.135" ry="308.095" transform="matrix(0.22 -0.98 0.96 0.3 -39.82 488.07)"/><ellipse cx="144.54" cy="222.6" rx="144.54" ry="222.6" transform="matrix(0.22 -0.98 0.96 0.3 139.41 230.68)"/></g></symbol>
+    <symbol id="lines-17" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="138.605" cy="226.22" rx="138.605" ry="226.22" transform="matrix(-0.76 -0.65 0.65 -0.76 373 666)"/><ellipse cx="202.445" cy="284.54" rx="202.445" ry="284.54" transform="matrix(-0.76 -0.65 0.65 -0.76 210.36 603.4)"/></g></symbol>
+    <symbol id="lines-18" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="212.235" cy="331.09" rx="212.235" ry="331.09" transform="matrix(-0.72 -0.69 0.73 -0.69 228.72 702.26)"/><ellipse cx="97.84" cy="160.905" rx="97.84" ry="160.905" transform="matrix(-0.73 -0.68 0.72 -0.69 92.63 308.54)"/></g></symbol>
+    <symbol id="lines-19" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="298.08" cy="190.61" rx="298.08" ry="190.61" transform="matrix(0.11 -0.99 0.99 0.11 -29.82 578.89)"/><ellipse cx="240.155" cy="190.61" rx="240.155" ry="190.61" transform="matrix(0.11 -0.99 0.99 0.11 192.83 564.28)"/></g></symbol>
+    <symbol id="lines-20" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(0 -1 1 0 0 340.51)"/><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(0 -1 1 0 0 600)"/></g></symbol>
+    <symbol id="lines-21" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="139.84" cy="178.06" rx="139.84" ry="178.06" transform="matrix(-0.87 0.5 -0.5 -0.87 360.27 515.02)"/><ellipse cx="197.76" cy="318.585" rx="197.76" ry="318.585" transform="matrix(-0.87 0.5 -0.5 -0.87 694.54 469.61)"/></g></symbol>
+    <symbol id="lines-22" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="149.645" cy="300.555" rx="149.645" ry="300.555" transform="matrix(0.13 0.99 -0.99 0.13 579.21 257.65)"/><ellipse cx="183.285" cy="269.255" rx="183.285" ry="269.255" transform="matrix(0 1 -1 0 538.51 0)"/></g></symbol>
+    <symbol id="lines-23" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="216.205" cy="348.25" rx="216.205" ry="348.25" transform="matrix(0.72 -0.69 -0.73 -0.69 396.32 704.33)"/><ellipse cx="97.84" cy="143.43" rx="97.84" ry="143.43" transform="matrix(0.73 -0.68 -0.72 -0.69 505.43 287.19)"/></g></symbol>
+    <symbol id="lines-24" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(1 0 0 1 259.49 0)"/><ellipse cx="170.255" cy="300" rx="170.255" ry="300" transform="matrix(1 0 0 1 0 0)"/></g></symbol>
+    <symbol id="lines-25" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="196.22" cy="306.68" rx="196.22" ry="306.68" transform="matrix(-0.68 -0.73 -0.68 0.73 692 246)"/><ellipse cx="141.245" cy="242.94" rx="141.245" ry="242.94" transform="matrix(-0.68 -0.73 -0.68 0.73 454.86 133.34)"/></g></symbol>
+    <symbol id="lines-26" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="150.92" cy="232.88" rx="150.92" ry="232.88" transform="matrix(-0.76 -0.65 0.65 -0.76 374.21 672.18)"/><ellipse cx="198.38" cy="269.35" rx="198.38" ry="269.35" transform="matrix(-0.76 -0.65 0.65 -0.76 208.01 574.98)"/></g></symbol>
+    <symbol id="lines-27" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="301.055" cy="190.635" rx="301.055" ry="190.635" transform="matrix(0.11 -0.99 0.99 0.11 -29.82 578.68)"/><ellipse cx="242.555" cy="190.635" rx="242.555" ry="190.635" transform="matrix(0.11 -0.99 0.99 0.11 192.83 563.92)"/></g></symbol>
+    <symbol id="lines-28" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="138.435" cy="209.92" rx="138.435" ry="209.92" transform="matrix(0.87 -0.5 0.5 0.87 215.49 81.75)"/><ellipse cx="177.37" cy="329.695" rx="177.37" ry="329.695" transform="matrix(0.87 -0.5 0.5 0.87 -86.52 103.86)"/></g></symbol>
+    <symbol id="lines-29" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="170.915" cy="274.165" rx="170.915" ry="274.165" transform="matrix(0.96 0.27 -0.27 0.96 329.08 21.6)"/><ellipse cx="198.965" cy="274.99" rx="198.965" ry="274.99" transform="matrix(0.96 0.27 -0.27 0.96 88.82 -46.18)"/></g></symbol>
+    <symbol id="lines-30" viewBox="0 0 600 600" overflow="visible"><g fill="none" stroke="#fff" stroke-width="1" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"><ellipse cx="205.5" cy="299.12" rx="205.5" ry="299.12" transform="matrix(0.3 0.95 0.98 -0.22 -52.48 79.2)"/><ellipse cx="192.185" cy="301.07" rx="192.185" ry="301.07" transform="matrix(0.3 0.95 0.98 -0.22 -52.09 286.95)"/></g></symbol>
+  </defs>
+</svg>
+
+<!-- ===================== MENÚ =====================
+     Los enlaces saltan a las secciones con id="about", id="network" e id="contact". -->
+<header class="header">
+  <a class="header__logo" href="#about" aria-label="ANZA(30) — back to top"><svg viewBox="0 0 48 36" fill="#fff" aria-hidden="true"><path d="M5.21 7.52C10.92 1.81 18.96 0.60 23.18 4.82C24.60 6.23 25.40 8.08 25.63 10.12C27.67 10.35 29.52 11.15 30.93 12.57C35.15 16.79 33.94 24.83 28.23 30.54C22.53 36.25 14.48 37.46 10.26 33.24C8.85 31.82 8.04 29.98 7.81 27.93C5.77 27.71 3.93 26.90 2.51 25.49C-1.70 21.27 -0.49 13.22 5.21 7.52ZM16.02 9.98L12.68 18.99C12.33 18.89 11.98 18.77 11.63 18.64C10.77 18.33 9.87 17.87 8.95 17.27C8.01 16.68 7.03 15.89 6.01 14.92V16.51C6.91 17.44 7.91 18.24 9.00 18.91C9.97 19.53 11.02 20.02 12.16 20.39L9.29 28.17H11.21L13.87 20.81C14.76 20.98 15.69 21.06 16.67 21.06C17.82 21.06 18.92 20.94 19.94 20.72L22.64 28.17H24.57L21.64 20.23C22.61 19.89 23.52 19.45 24.37 18.91C25.45 18.24 26.44 17.44 27.33 16.51V14.92C26.31 15.89 25.33 16.68 24.39 17.27C23.47 17.87 22.58 18.33 21.71 18.64C21.52 18.71 21.32 18.78 21.13 18.85L17.86 9.98H16.02ZM19.42 19.27C19.34 19.29 19.25 19.30 19.17 19.31C18.34 19.43 17.50 19.49 16.67 19.49C15.92 19.49 15.16 19.44 14.41 19.34L16.93 12.39L19.42 19.27Z"/><path d="M43.20 10.30C42.37 10.30 41.66 10.09 41.08 9.68C40.51 9.26 40.08 8.66 39.79 7.90C39.49 7.13 39.35 6.21 39.35 5.15C39.35 4.09 39.49 3.17 39.79 2.40C40.08 1.63 40.51 1.04 41.08 0.62C41.66 0.20 42.37 0 43.20 0C44.05 0 44.76 0.20 45.33 0.62C45.90 1.04 46.33 1.63 46.62 2.40C46.92 3.17 47.06 4.09 47.06 5.15C47.06 6.21 46.92 7.13 46.62 7.90C46.33 8.66 45.90 9.26 45.33 9.68C44.76 10.09 44.05 10.30 43.20 10.30ZM43.20 9.43C44.16 9.43 44.87 9.06 45.34 8.31C45.81 7.55 46.04 6.50 46.04 5.15C46.04 3.81 45.81 2.77 45.34 2.02C44.87 1.26 44.16 0.88 43.20 0.88C42.25 0.88 41.53 1.26 41.07 2.02C40.60 2.77 40.37 3.81 40.37 5.15C40.37 6.50 40.60 7.55 41.07 8.31C41.53 9.06 42.25 9.43 43.20 9.43Z"/><path d="M35.27 10.30C34.50 10.30 33.83 10.19 33.26 9.96C32.70 9.72 32.26 9.38 31.94 8.92C31.62 8.46 31.44 7.89 31.41 7.21H32.44C32.44 7.61 32.54 7.98 32.75 8.31C32.96 8.64 33.27 8.91 33.69 9.12C34.12 9.32 34.64 9.42 35.27 9.42C36.09 9.42 36.70 9.21 37.11 8.79C37.52 8.37 37.73 7.87 37.73 7.28C37.73 6.78 37.60 6.37 37.35 6.06C37.09 5.75 36.75 5.52 36.31 5.38C35.88 5.22 35.41 5.15 34.90 5.15H33.85V4.29H34.91C35.67 4.29 36.26 4.14 36.67 3.82C37.08 3.50 37.29 3.07 37.29 2.51C37.29 2.04 37.13 1.65 36.79 1.35C36.46 1.03 35.95 0.88 35.27 0.88C34.51 0.88 33.93 1.05 33.53 1.39C33.13 1.72 32.91 2.15 32.86 2.69H31.83C31.85 2.16 32.00 1.70 32.27 1.30C32.54 0.90 32.93 0.58 33.43 0.35C33.95 0.11 34.56 0 35.27 0C35.94 0 36.50 0.11 36.95 0.34C37.41 0.55 37.75 0.85 37.97 1.23C38.20 1.60 38.32 2.01 38.32 2.46C38.32 2.93 38.18 3.38 37.90 3.81C37.63 4.24 37.18 4.52 36.57 4.66C37.18 4.79 37.70 5.07 38.12 5.52C38.54 5.95 38.76 6.54 38.76 7.27C38.76 7.81 38.62 8.31 38.36 8.78C38.10 9.23 37.71 9.60 37.19 9.89C36.68 10.16 36.04 10.30 35.27 10.30Z"/></svg></a>
+  <nav class="nav" aria-label="Main">
+    <a href="#about" class="is-active">About us</a>
+    <span aria-hidden="true">//</span>
+    <a href="#network">The partner Network</a>
+    <span aria-hidden="true">//</span>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===================== HERO (4 escenas con el scroll) =====================
+       Lo primero son capas de fondo y adornos (no tocar). Los TEXTOS están más
+       abajo, en "scene scene--1" … "scene scene--4": uno por pantalla. -->
+  <section class="hero" id="about" aria-label="About ANZA(30)">
+    <div class="hero__stage" data-state="0">
+      <!-- Capas de fondo (NO TOCAR): degradados, imagen azul, mapamundi de puntos,
+           luces, letras grandes ANZA(30), óvalos, líneas y marco de esquinas. -->
+      <div class="hero__bg hero__bg--1"></div>
+      <div class="hero__bg hero__bg--2"></div>
+      <div class="hero__bg hero__bg--3"></div>
+      <div class="hero__bg hero__bg--4"></div>
+      <div class="hero__drift"><img class="hero__light" src="assets/img/hero-light.jpg" alt="" width="1727" height="1117" fetchpriority="high"></div>
+      <div class="hero__map"><div class="hero__map-inner"><img src="assets/img/world-map.svg" alt="" width="1432" height="806"><div class="hero__lights" aria-hidden="true"><i style="left:16%;top:37%;width:21.0%;animation-duration:7.5s;animation-delay:0s"></i><i style="left:26%;top:38%;width:18.2%;animation-duration:6s;animation-delay:-2.2s"></i><i style="left:30%;top:70%;width:19.6%;animation-duration:8.5s;animation-delay:-4s"></i><i style="left:46.5%;top:27%;width:15.4%;animation-duration:5.5s;animation-delay:-1s"></i><i style="left:52%;top:57%;width:21.0%;animation-duration:9s;animation-delay:-5.5s"></i><i style="left:60%;top:41%;width:16.8%;animation-duration:6.5s;animation-delay:-3.2s"></i><i style="left:69%;top:47%;width:18.2%;animation-duration:7s;animation-delay:-0.6s"></i><i style="left:80%;top:36%;width:22.4%;animation-duration:8s;animation-delay:-4.6s"></i><i style="left:86%;top:75%;width:16.8%;animation-duration:6s;animation-delay:-2.8s"></i><i style="left:74%;top:27%;width:19.6%;animation-duration:9.5s;animation-delay:-7s"></i></div></div></div>
+      <div class="hero__screen"><img class="hero__smoke" src="assets/img/hero-smoke.jpg" alt="" width="1727" height="1117"></div>
+
+      <div class="hero__big hero__big--anza" aria-hidden="true"><svg viewBox="0 0 476 140" fill="#fff"><path d="M357.44 140L409.24 0H423.44L475.04 140H460.24L412.84 9.2H419.64L372.24 140H357.44ZM381.44 102.8L385.64 91.2H446.84L451.04 102.8H381.44Z"/><path d="M258.84 140V128.8L329.24 12.4H260.04V0H345.64V11.2L275.24 127.6H346.64V140H258.84Z"/><path d="M134.56 140V0H148.56L225.96 116.4V0H239.96V140H225.96L148.56 23.4V140H134.56Z"/><path d="M0 140L51.8 0H66L117.6 140H102.8L55.4 9.2H62.2L14.8 140H0ZM24 102.8L28.2 91.2H89.4L93.6 102.8H24Z"/></svg></div>
+      <div class="hero__big hero__big--30" aria-hidden="true"><svg viewBox="0 0 360 192" fill="#fff"><path d="M304.50 191.2C313.17 182 320.17 173.2 325.50 164.8C330.84 156.53 334.90 148.53 337.70 140.8C340.64 133.06 342.64 125.46 343.70 118C344.77 110.53 345.30 103.06 345.30 95.6C345.30 88.13 344.77 80.66 343.70 73.2C342.64 65.73 340.64 58.13 337.70 50.4C334.90 42.66 330.84 34.66 325.50 26.4C320.17 18 313.17 9.2 304.50 0H318.70C326.97 8 334.10 16.86 340.10 26.6C346.24 36.33 350.97 46.93 354.30 58.4C357.64 69.86 359.30 82.26 359.30 95.6C359.30 108.93 357.64 121.33 354.30 132.8C350.97 144.26 346.24 154.8 340.10 164.4C334.10 174.13 326.97 183.06 318.70 191.2H304.50Z"/><path d="M240.63 164.6C228.89 164.6 218.96 161.66 210.83 155.8C202.83 149.93 196.76 141.6 192.63 130.8C188.49 120 186.43 107.13 186.43 92.2C186.43 77.26 188.49 64.4 192.63 53.6C196.76 42.8 202.83 34.46 210.83 28.6C218.96 22.73 228.89 19.8 240.63 19.8C252.49 19.8 262.43 22.73 270.43 28.6C278.43 34.46 284.49 42.8 288.63 53.6C292.76 64.4 294.83 77.26 294.83 92.2C294.83 107.13 292.76 120 288.63 130.8C284.49 141.6 278.43 149.93 270.43 155.8C262.43 161.66 252.49 164.6 240.63 164.6ZM240.63 152.4C254.09 152.4 264.09 147.13 270.63 136.6C277.16 125.93 280.43 111.13 280.43 92.2C280.43 73.4 277.16 58.73 270.63 48.2C264.09 37.53 254.09 32.2 240.63 32.2C227.16 32.2 217.16 37.53 210.63 48.2C204.09 58.73 200.83 73.4 200.83 92.2C200.83 111.13 204.09 125.93 210.63 136.6C217.16 147.13 227.16 152.4 240.63 152.4Z"/><path d="M119.15 164.6C108.35 164.6 98.95 163 90.95 159.8C83.08 156.46 76.88 151.6 72.35 145.2C67.81 138.66 65.35 130.66 64.95 121.2H79.35C79.35 126.8 80.81 131.93 83.75 136.6C86.68 141.26 91.08 145.06 96.95 148C102.95 150.8 110.35 152.2 119.15 152.2C130.62 152.2 139.22 149.26 144.95 143.4C150.82 137.53 153.75 130.46 153.75 122.2C153.75 115.13 151.95 109.4 148.35 105C144.75 100.6 139.88 97.4 133.75 95.4C127.75 93.26 121.15 92.2 113.95 92.2H99.15V80.2H114.15C124.82 80.2 133.02 78 138.75 73.6C144.62 69.06 147.55 62.93 147.55 55.2C147.55 48.53 145.22 43.06 140.55 38.8C135.88 34.4 128.75 32.2 119.15 32.2C108.48 32.2 100.35 34.6 94.75 39.4C89.15 44.06 86.01 50.13 85.35 57.6H70.75C71.15 50.26 73.21 43.8 76.95 38.2C80.81 32.46 86.28 28 93.35 24.8C100.55 21.46 109.15 19.8 119.15 19.8C128.62 19.8 136.48 21.4 142.75 24.6C149.15 27.66 153.95 31.86 157.15 37.2C160.35 42.4 161.95 48.13 161.95 54.4C161.95 61.06 160.02 67.4 156.15 73.4C152.28 79.4 146.02 83.4 137.35 85.4C146.02 87.13 153.28 91.13 159.15 97.4C165.15 103.53 168.15 111.73 168.15 122C168.15 129.6 166.28 136.66 162.55 143.2C158.95 149.6 153.48 154.8 146.15 158.8C138.95 162.66 129.95 164.6 119.15 164.6Z"/><path d="M40.6 191.2C32.33 183.06 25.13 174.13 19 164.4C13 154.8 8.33 144.26 5 132.8C1.66 121.33 0 108.93 0 95.6C0 82.26 1.66 69.86 5 58.4C8.33 46.93 13 36.33 19 26.6C25.13 16.86 32.33 8 40.6 0H54.8C46.26 9.2 39.26 18 33.8 26.4C28.46 34.66 24.33 42.66 21.4 50.4C18.6 58.13 16.66 65.73 15.6 73.2C14.53 80.66 14 88.13 14 95.6C14 103.06 14.53 110.53 15.6 118C16.66 125.46 18.6 133.06 21.4 140.8C24.33 148.53 28.46 156.53 33.8 164.8C39.26 173.2 46.26 182 54.8 191.2H40.6Z"/></svg></div>
+      <div class="hero__big hero__big--anza hero__shine" aria-hidden="true"><svg viewBox="0 0 476 140" fill="#fff"><path d="M357.44 140L409.24 0H423.44L475.04 140H460.24L412.84 9.2H419.64L372.24 140H357.44ZM381.44 102.8L385.64 91.2H446.84L451.04 102.8H381.44Z"/><path d="M258.84 140V128.8L329.24 12.4H260.04V0H345.64V11.2L275.24 127.6H346.64V140H258.84Z"/><path d="M134.56 140V0H148.56L225.96 116.4V0H239.96V140H225.96L148.56 23.4V140H134.56Z"/><path d="M0 140L51.8 0H66L117.6 140H102.8L55.4 9.2H62.2L14.8 140H0ZM24 102.8L28.2 91.2H89.4L93.6 102.8H24Z"/></svg></div>
+      <div class="hero__big hero__big--30 hero__shine" aria-hidden="true"><svg viewBox="0 0 360 192" fill="#fff"><path d="M304.50 191.2C313.17 182 320.17 173.2 325.50 164.8C330.84 156.53 334.90 148.53 337.70 140.8C340.64 133.06 342.64 125.46 343.70 118C344.77 110.53 345.30 103.06 345.30 95.6C345.30 88.13 344.77 80.66 343.70 73.2C342.64 65.73 340.64 58.13 337.70 50.4C334.90 42.66 330.84 34.66 325.50 26.4C320.17 18 313.17 9.2 304.50 0H318.70C326.97 8 334.10 16.86 340.10 26.6C346.24 36.33 350.97 46.93 354.30 58.4C357.64 69.86 359.30 82.26 359.30 95.6C359.30 108.93 357.64 121.33 354.30 132.8C350.97 144.26 346.24 154.8 340.10 164.4C334.10 174.13 326.97 183.06 318.70 191.2H304.50Z"/><path d="M240.63 164.6C228.89 164.6 218.96 161.66 210.83 155.8C202.83 149.93 196.76 141.6 192.63 130.8C188.49 120 186.43 107.13 186.43 92.2C186.43 77.26 188.49 64.4 192.63 53.6C196.76 42.8 202.83 34.46 210.83 28.6C218.96 22.73 228.89 19.8 240.63 19.8C252.49 19.8 262.43 22.73 270.43 28.6C278.43 34.46 284.49 42.8 288.63 53.6C292.76 64.4 294.83 77.26 294.83 92.2C294.83 107.13 292.76 120 288.63 130.8C284.49 141.6 278.43 149.93 270.43 155.8C262.43 161.66 252.49 164.6 240.63 164.6ZM240.63 152.4C254.09 152.4 264.09 147.13 270.63 136.6C277.16 125.93 280.43 111.13 280.43 92.2C280.43 73.4 277.16 58.73 270.63 48.2C264.09 37.53 254.09 32.2 240.63 32.2C227.16 32.2 217.16 37.53 210.63 48.2C204.09 58.73 200.83 73.4 200.83 92.2C200.83 111.13 204.09 125.93 210.63 136.6C217.16 147.13 227.16 152.4 240.63 152.4Z"/><path d="M119.15 164.6C108.35 164.6 98.95 163 90.95 159.8C83.08 156.46 76.88 151.6 72.35 145.2C67.81 138.66 65.35 130.66 64.95 121.2H79.35C79.35 126.8 80.81 131.93 83.75 136.6C86.68 141.26 91.08 145.06 96.95 148C102.95 150.8 110.35 152.2 119.15 152.2C130.62 152.2 139.22 149.26 144.95 143.4C150.82 137.53 153.75 130.46 153.75 122.2C153.75 115.13 151.95 109.4 148.35 105C144.75 100.6 139.88 97.4 133.75 95.4C127.75 93.26 121.15 92.2 113.95 92.2H99.15V80.2H114.15C124.82 80.2 133.02 78 138.75 73.6C144.62 69.06 147.55 62.93 147.55 55.2C147.55 48.53 145.22 43.06 140.55 38.8C135.88 34.4 128.75 32.2 119.15 32.2C108.48 32.2 100.35 34.6 94.75 39.4C89.15 44.06 86.01 50.13 85.35 57.6H70.75C71.15 50.26 73.21 43.8 76.95 38.2C80.81 32.46 86.28 28 93.35 24.8C100.55 21.46 109.15 19.8 119.15 19.8C128.62 19.8 136.48 21.4 142.75 24.6C149.15 27.66 153.95 31.86 157.15 37.2C160.35 42.4 161.95 48.13 161.95 54.4C161.95 61.06 160.02 67.4 156.15 73.4C152.28 79.4 146.02 83.4 137.35 85.4C146.02 87.13 153.28 91.13 159.15 97.4C165.15 103.53 168.15 111.73 168.15 122C168.15 129.6 166.28 136.66 162.55 143.2C158.95 149.6 153.48 154.8 146.15 158.8C138.95 162.66 129.95 164.6 119.15 164.6Z"/><path d="M40.6 191.2C32.33 183.06 25.13 174.13 19 164.4C13 154.8 8.33 144.26 5 132.8C1.66 121.33 0 108.93 0 95.6C0 82.26 1.66 69.86 5 58.4C8.33 46.93 13 36.33 19 26.6C25.13 16.86 32.33 8 40.6 0H54.8C46.26 9.2 39.26 18 33.8 26.4C28.46 34.66 24.33 42.66 21.4 50.4C18.6 58.13 16.66 65.73 15.6 73.2C14.53 80.66 14 88.13 14 95.6C14 103.06 14.53 110.53 15.6 118C16.66 125.46 18.6 133.06 21.4 140.8C24.33 148.53 28.46 156.53 33.8 164.8C39.26 173.2 46.26 182 54.8 191.2H40.6Z"/></svg></div>
+
+      <div class="deco deco--a"><svg viewBox="0 0 75 75" aria-hidden="true"><ellipse cx="25.45" cy="37.54" rx="24.15" ry="32.68"/><ellipse cx="49.95" cy="37.54" rx="24.15" ry="32.68"/></svg></div>
+      <div class="deco deco--b"><svg viewBox="0 0 75 75" aria-hidden="true"><ellipse cx="25.45" cy="37.54" rx="24.15" ry="32.68"/><ellipse cx="49.95" cy="37.54" rx="24.15" ry="32.68"/></svg></div>
+      <div class="deco deco--c"><svg viewBox="0 0 75 75" aria-hidden="true"><ellipse cx="25.45" cy="37.54" rx="24.15" ry="32.68"/><ellipse cx="49.95" cy="37.54" rx="24.15" ry="32.68"/></svg></div>
+      <svg class="hero__route" viewBox="0 0 1321 704" preserveAspectRatio="none" aria-hidden="true"><mask id="route-reveal" maskUnits="userSpaceOnUse" x="-10" y="-10" width="1341" height="724"><path class="hero__route-reveal" pathLength="1" d="M188.73 148.87L387.23 21.87L253.73 428.87L634.73 161.87L1115.23 303.87L1320.23 88.37L662.73 428.87L813.73 633.87L337.73 702.87L458.23 527.87L1.23 112.37L531.73 88.37L749.23 290.87L813.73 88.37L716.73 0.37L1320.23 596.87"/></mask><path class="hero__route-line" mask="url(#route-reveal)" d="M188.73 148.87L387.23 21.87L253.73 428.87L634.73 161.87L1115.23 303.87L1320.23 88.37L662.73 428.87L813.73 633.87L337.73 702.87L458.23 527.87L1.23 112.37L531.73 88.37L749.23 290.87L813.73 88.37L716.73 0.37L1320.23 596.87"/></svg>
+      <svg class="hero__route hero__route--flow" viewBox="0 0 1321 704" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M188.73 148.87L387.23 21.87L253.73 428.87L634.73 161.87L1115.23 303.87L1320.23 88.37L662.73 428.87L813.73 633.87L337.73 702.87L458.23 527.87L1.23 112.37L531.73 88.37L749.23 290.87L813.73 88.37L716.73 0.37L1320.23 596.87"/></svg>
+      <svg class="hero__route hero__route--dots" viewBox="-10 -10 1341 724" preserveAspectRatio="none" aria-hidden="true"><path style="--i:0" d="M188.73 148.87h0"/><path style="--i:1" d="M387.23 21.87h0"/><path style="--i:2" d="M253.73 428.87h0"/><path style="--i:3" d="M634.73 161.87h0"/><path style="--i:4" d="M1115.23 303.87h0"/><path style="--i:5" d="M1320.23 88.37h0"/><path style="--i:6" d="M662.73 428.87h0"/><path style="--i:7" d="M813.73 633.87h0"/><path style="--i:8" d="M337.73 702.87h0"/><path style="--i:9" d="M458.23 527.87h0"/><path style="--i:10" d="M1.23 112.37h0"/><path style="--i:11" d="M531.73 88.37h0"/><path style="--i:12" d="M749.23 290.87h0"/><path style="--i:13" d="M813.73 88.37h0"/><path style="--i:14" d="M716.73 0.37h0"/><path style="--i:15" d="M1320.23 596.87h0"/></svg>
+
+      <span class="hero__frame" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+
+      <!-- ↓↓ TEXTOS DEL HERO: pantalla 1, 2, 3 y 4 ↓↓ -->
+      <div class="scene scene--1 is-active">
+        <h1>30 Business Angels. <u>One Line</u> In Your Cap Table.</h1>
+        <p>We invest at the pre-seed and seed stages, backing ambitious founders building for international markets.</p>
       </div>
+
+      <!-- Pantalla 2: empieza con el logotipo ANZA(30) dibujado (el <svg>); el texto va después -->
+      <div class="scene scene--2" aria-hidden="true">
+        <p><svg class="scene__wordmark" viewBox="0 0 282 62" fill="#fff" role="img" aria-label="ANZA(30)"><path d="M263.64 61.30C266.42 58.35 268.66 55.53 270.37 52.84C272.08 50.19 273.39 47.62 274.29 45.14C275.23 42.66 275.87 40.23 276.21 37.83C276.55 35.44 276.72 33.04 276.72 30.65C276.72 28.25 276.55 25.86 276.21 23.47C275.87 21.07 275.23 18.64 274.29 16.16C273.39 13.68 272.08 11.11 270.37 8.46C268.66 5.77 266.42 2.94 263.64 0H268.19C270.84 2.56 273.13 5.40 275.06 8.52C277.02 11.65 278.54 15.04 279.61 18.72C280.68 22.40 281.21 26.37 281.21 30.65C281.21 34.92 280.68 38.90 279.61 42.58C278.54 46.25 277.02 49.63 275.06 52.71C273.13 55.83 270.84 58.7 268.19 61.30H263.64Z"/><path d="M244.44 52.77C240.68 52.77 237.49 51.83 234.89 49.95C232.32 48.07 230.38 45.40 229.05 41.94C227.72 38.47 227.06 34.35 227.06 29.56C227.06 24.77 227.72 20.64 229.05 17.18C230.38 13.72 232.32 11.05 234.89 9.17C237.49 7.28 240.68 6.34 244.44 6.34C248.25 6.34 251.43 7.28 254.00 9.17C256.56 11.05 258.51 13.72 259.83 17.18C261.16 20.64 261.82 24.77 261.82 29.56C261.82 34.35 261.16 38.47 259.83 41.94C258.51 45.40 256.56 48.07 254.00 49.95C251.43 51.83 248.25 52.77 244.44 52.77ZM244.44 48.86C248.76 48.86 251.97 47.17 254.06 43.80C256.16 40.38 257.20 35.63 257.20 29.56C257.20 23.53 256.16 18.83 254.06 15.45C251.97 12.03 248.76 10.32 244.44 10.32C240.12 10.32 236.92 12.03 234.82 15.45C232.73 18.83 231.68 23.53 231.68 29.56C231.68 35.63 232.73 40.38 234.82 43.80C236.92 47.17 240.12 48.86 244.44 48.86Z"/><path d="M206.77 52.77C203.31 52.77 200.29 52.26 197.73 51.23C195.21 50.17 193.22 48.61 191.77 46.55C190.31 44.46 189.52 41.89 189.39 38.86H194.01C194.01 40.65 194.48 42.30 195.42 43.80C196.36 45.29 197.77 46.51 199.65 47.45C201.58 48.35 203.95 48.80 206.77 48.80C210.45 48.80 213.21 47.86 215.04 45.98C216.93 44.09 217.87 41.83 217.87 39.18C217.87 36.91 217.29 35.07 216.14 33.66C214.98 32.25 213.42 31.23 211.45 30.58C209.53 29.90 207.41 29.56 205.10 29.56H200.36V25.71H205.17C208.59 25.71 211.22 25.01 213.06 23.59C214.94 22.14 215.88 20.17 215.88 17.69C215.88 15.56 215.13 13.80 213.63 12.44C212.14 11.03 209.85 10.32 206.77 10.32C203.35 10.32 200.74 11.09 198.95 12.63C197.15 14.12 196.15 16.07 195.93 18.46H191.25C191.38 16.11 192.04 14.04 193.24 12.24C194.48 10.41 196.23 8.97 198.50 7.95C200.81 6.88 203.57 6.34 206.77 6.34C209.81 6.34 212.33 6.86 214.34 7.88C216.39 8.87 217.93 10.21 218.96 11.92C219.98 13.59 220.5 15.43 220.5 17.44C220.5 19.58 219.88 21.61 218.64 23.53C217.40 25.45 215.39 26.74 212.61 27.38C215.39 27.93 217.72 29.22 219.60 31.23C221.52 33.19 222.48 35.82 222.48 39.11C222.48 41.55 221.89 43.82 220.69 45.91C219.53 47.96 217.78 49.63 215.43 50.91C213.12 52.15 210.24 52.77 206.77 52.77Z"/><path d="M182.87 61.30C180.22 58.7 177.91 55.83 175.94 52.71C174.02 49.63 172.52 46.25 171.45 42.58C170.38 38.90 169.85 34.92 169.85 30.65C169.85 26.37 170.38 22.40 171.45 18.72C172.52 15.04 174.02 11.65 175.94 8.52C177.91 5.40 180.22 2.56 182.87 0H187.42C184.68 2.94 182.44 5.77 180.69 8.46C178.98 11.11 177.65 13.68 176.71 16.16C175.81 18.64 175.19 21.07 174.85 23.47C174.51 25.86 174.34 28.25 174.34 30.65C174.34 33.04 174.51 35.44 174.85 37.83C175.19 40.23 175.81 42.66 176.71 45.14C177.65 47.62 178.98 50.19 180.69 52.84C182.44 55.53 184.68 58.35 187.42 61.30H182.87Z"/><path d="M89.88 52.00V48.41L112.46 11.09H90.27V7.11H117.72V10.70L95.14 48.03H118.04V52.00H89.88Z"/><path d="M51.32 52.00V7.11H55.80L80.62 44.44V7.11H85.11V52.00H80.62L55.80 14.62V52.00H51.32Z"/><path d="M37.13 29.09C37.61 28.94 38.08 28.77 38.56 28.59C40.68 27.82 42.87 26.70 45.14 25.23C47.44 23.76 49.85 21.84 52.37 19.46V23.36C50.18 25.64 47.75 27.60 45.08 29.25C42.99 30.57 40.76 31.65 38.39 32.50L45.57 51.98H40.84L34.22 33.70C31.69 34.25 29.01 34.53 26.18 34.53C23.78 34.53 21.49 34.33 19.31 33.93L12.77 51.98H8.05L15.11 32.88C12.31 31.99 9.72 30.78 7.34 29.25C4.67 27.60 2.22 25.64 0 23.36V19.46C2.51 21.84 4.93 23.76 7.23 25.23C9.49 26.70 11.68 27.82 13.80 28.59C14.67 28.92 15.53 29.20 16.39 29.45L24.57 7.32H29.10L37.13 29.09ZM20.62 30.31C22.47 30.56 24.33 30.68 26.18 30.68C28.23 30.68 30.27 30.53 32.32 30.24C32.52 30.21 32.73 30.18 32.93 30.14L26.81 13.24L20.62 30.31Z"/><path d="M149.36 29.09C149.83 28.94 150.31 28.77 150.79 28.59C152.91 27.82 155.10 26.70 157.36 25.23C159.66 23.76 162.07 21.84 164.59 19.46V23.36C162.40 25.64 159.97 27.60 157.31 29.25C155.22 30.57 152.99 31.65 150.61 32.50L157.79 51.98H153.07L146.45 33.70C143.92 34.25 141.24 34.53 138.41 34.53C136.01 34.53 133.72 34.33 131.54 33.93L125.00 51.98H120.28L127.34 32.88C124.54 31.99 121.95 30.78 119.56 29.25C116.90 27.60 114.45 25.64 112.22 23.36V19.46C114.74 21.84 117.15 23.76 119.45 25.23C121.72 26.70 123.91 27.82 126.03 28.59C126.9 28.92 127.76 29.20 128.61 29.45L136.80 7.32H141.33L149.36 29.09ZM132.85 30.31C134.70 30.56 136.55 30.68 138.41 30.68C140.45 30.68 142.50 30.53 144.54 30.24C144.75 30.21 144.95 30.18 145.16 30.14L139.03 13.24L132.85 30.31Z"/></svg>brings together 30 carefully selected founders, operators and investors with experience across industries and markets.</p>
+      </div>
+
+      <!-- Pantalla 3: dos párrafos -->
+      <div class="scene scene--3" aria-hidden="true">
+        <p>Portfolio companies gain access to this collective expertise and trusted networks across Spain, Europe and the US, with the right partner stepping in when needed.</p>
+        <p>We invest $30,000 per company, keep governance simple and trust founders to lead.</p>
+      </div>
+
+      <!-- Pantalla 4: frase y botón "View the network" (lleva a los partners) -->
+      <div class="scene scene--4" aria-hidden="true">
+        <p>Our role is to offer practical advice and relevant introductions to potential clients, talent or investors.</p>
+        <a class="scene__cta" href="#network">View the network</a>
+      </div>
+
     </div>
+  </section>
+
+  <div class="flow">
+
+    <!-- ===================== THE PARTNER NETWORK ===================== -->
+    <section class="network" id="network" aria-labelledby="network-title">
+      <!-- Etiqueta y titular de la sección -->
+      <div class="network__intro">
+        <p class="network__label">THE PARTNER NETWORK</p>
+        <h2 class="network__title" id="network-title">One investment gives you access to the experience and networks of 30 founders, operators and investors. We bring in the right partner while keeping your cap table simple.</h2>
+      </div>
+
+      <!-- ╔══════════════════════════════════════════════════════════════════════╗
+           ║  PARTNERS — CÓMO EDITARLOS                                           ║
+           ╚══════════════════════════════════════════════════════════════════════╝
+           Cada partner es un bloque <li class="card"> … </li>. Solo hay que tocar:
+
+           1. NOMBRE     <h3 class="card__name"><span>NOMBRE</span> <span>Apellido</span></h3>
+                         · 1er <span>: el nombre EN MAYÚSCULAS. Las "A" (sin tilde) se cambian
+                           solas por la "A" especial de la marca; no hay que hacer nada.
+                         · 2º <span>: el apellido, con mayúscula inicial.
+           2. FOTO       src="assets/img/partners/archivo.webp" → el nombre del fichero.
+                         alt="Portrait of Nombre Apellido"       → descripción de la foto.
+                         La foto: 600 × 600 px, fondo transparente (PNG o WebP), en blanco
+                         y negro, con los ojos a ~215 px del borde superior y la cara
+                         centrada (plantilla: assets/img/partners/_PLANTILLA-FOTO.png).
+           3. BIO        el texto dentro de <p class="card__bio"> … </p>.
+                         Si se deja vacío, esa tarjeta no muestra el botón "+".
+
+           NO TOCAR: clip-path:url(#blob-XX) y href="#lines-XX". Son la forma de la
+           máscara y las líneas de fondo de esa tarjeta (hay 30, de la 01 a la 30).
+
+           ORDEN: las tarjetas salen en el orden en que están escritas aquí. Para
+           mover un partner, corta su bloque <li> … </li> entero y pégalo en otro sitio.
+
+           QUITAR UN PARTNER: borra su bloque <li> … </li>. La cuadrícula se recoloca
+           sola: si la última fila queda incompleta, sus tarjetas se ensanchan.
+
+           AÑADIR EL PARTNER Nº 30: está preparado al final de la lista (búscalo como
+           "PARTNER 30"). Con 30 partners la cuadrícula queda completa y simétrica:
+           10 filas de 3 en escritorio, 15 filas de 2 en tablet y 1 columna en móvil.
+
+           AÑADIR MÁS PARTNERS (31, 32, 33…): al final de la lista hay una
+           "PLANTILLA PARA UN PARTNER NUEVO" lista para copiar. La cuadrícula admite
+           cualquier número y se recoloca sola; queda en filas completas con 30, 33, 36… -->
+      <ul class="grid">
+
+      <!-- ── PARTNER 01 · Pablo Torne ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-01)"><img src="assets/img/partners/pablo-torne.webp" alt="Portrait of Pablo Torne" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-01"/></svg>
+        <p class="card__bio">Consultant at Bain &amp; Company in San Francisco and co-founder of Kinnek. UCLA Anderson MBA with experience across corporate strategy, private equity and the technology ecosystem.</p>
+        <h3 class="card__name"><span>PABLO</span> <span>Torne</span></h3>
+      </li>
+
+      <!-- ── PARTNER 02 · Óscar Martínez ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-02)"><img src="assets/img/partners/oscar-martinez.webp" alt="Portrait of Óscar Martínez" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-02"/></svg>
+        <p class="card__bio">Manager at Efficio with consulting experience across Europe and the Middle East. Founder of the newsletter Built in Europe and co-founder of ANZA30. Focused on startups, operations and procurement.</p>
+        <h3 class="card__name"><span>ÓSCAR</span> <span>Martínez</span></h3>
+      </li>
+
+      <!-- ── PARTNER 03 · Óscar De Toca ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-03)"><img src="assets/img/partners/oscar-de-toca.png" alt="Portrait of Óscar De Toca" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-03"/></svg>
+        <p class="card__bio">Senior Customer Success Manager at Amazon in Austin and co-founder of Kinnek, with earlier experience in consulting and consumer retail and a focus on helping brands scale.</p>
+        <h3 class="card__name"><span>ÓSCAR</span> <span>De Toca</span></h3>
+      </li>
+
+      <!-- ── PARTNER 04 · Yamil Mateo ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-04)"><img src="assets/img/partners/yamil-mateo.webp" alt="Portrait of Yamil Mateo" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-04"/></svg>
+        <p class="card__bio">Head of Product at HappyRobot in San Francisco, with earlier product leadership experience at TravelPerk. He focuses on building and scaling AI products for enterprise operations.</p>
+        <h3 class="card__name"><span>YAMIL</span> <span>Mateo</span></h3>
+      </li>
+
+      <!-- ── PARTNER 05 · Xavier Trilla ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-05)"><img src="assets/img/partners/xavier-trilla.webp" alt="Portrait of Xavier Trilla" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-05"/></svg>
+        <p class="card__bio">Venture Associate at Silicon Foundry, Kearney, advising global companies on innovation, emerging technologies and venture investment. His prior experience includes startup growth, M&amp;A and public-sector innovation.</p>
+        <h3 class="card__name"><span>XAVIER</span> <span>Trilla</span></h3>
+      </li>
+
+      <!-- ── PARTNER 06 · Albert Beltrán ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-06)"><img src="assets/img/partners/albert-beltran.webp" alt="Portrait of Albert Beltrán" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-06"/></svg>
+        <p class="card__bio">Co-founder of Balance Phone and former Amazon professional with experience in digital advertising and consumer technology. He is building products designed to promote a healthier relationship with technology.</p>
+        <h3 class="card__name"><span>ALBERT</span> <span>Beltrán</span></h3>
+      </li>
+
+      <!-- ── PARTNER 07 · Silvestre Jara ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-07)"><img src="assets/img/partners/silvestre-jara.webp" alt="Portrait of Silvestre Jara" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-07"/></svg>
+        <p class="card__bio">Co-founder and CEO of Traza, building AI workers for procurement and supply-chain operations. Former Amazon and CMA CGM professional with hands-on experience in global operations.</p>
+        <h3 class="card__name"><span>SILVESTRE</span> <span>Jara</span></h3>
+      </li>
+
+      <!-- ── PARTNER 08 · Sergio Leal ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-08)"><img src="assets/img/partners/sergio-leal.webp" alt="Portrait of Sergio Leal" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-08"/></svg>
+        <p class="card__bio">Quantitative finance professional with experience at Optiver and a strong academic foundation in mathematics, including an MSc in Mathematics and Finance from Imperial College London.</p>
+        <h3 class="card__name"><span>SERGIO</span> <span>Leal</span></h3>
+      </li>
+
+      <!-- ── PARTNER 09 · Samuel Fernández ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-09)"><img src="assets/img/partners/samuel-fernandez.webp" alt="Portrait of Samuel Fernández" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-09"/></svg>
+        <p class="card__bio">Head of Go-to-Market at Balance Phone, leading growth for a consumer technology company designed to reduce digital distraction. His experience spans commercial strategy, business development and brand building.</p>
+        <h3 class="card__name"><span>SAMUEL</span> <span>Fernández</span></h3>
+      </li>
+
+      <!-- ── PARTNER 10 · Quique Vives ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-10)"><img src="assets/img/partners/quique-vives.webp" alt="Portrait of Quique Vives" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-10"/></svg>
+        <p class="card__bio">Co-founder and Director General of White Rabbit and House of Candy, immersive entertainment concepts in Barcelona combining culture, art and technology. Entrepreneur focused on consumer experiences and hospitality.</p>
+        <h3 class="card__name"><span>QUIQUE</span> <span>Vives</span></h3>
+      </li>
+
+      <!-- ── PARTNER 11 · Quili Peña ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-11)"><img src="assets/img/partners/quili-pena.webp" alt="Portrait of Quili Peña" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-11"/></svg>
+        <p class="card__bio">Head of Strategy and Operations at HappyRobot in San Francisco, helping scale an enterprise AI company. His work spans strategic planning, business building and cross-functional execution.</p>
+        <h3 class="card__name"><span>QUILI</span> <span>Peña</span></h3>
+      </li>
+
+      <!-- ── PARTNER 12 · Pol Bernat ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-12)"><img src="assets/img/partners/pol-benat.webp" alt="Portrait of Pol Bernat" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-12"/></svg>
+        <p class="card__bio">Engineer at Shinkei in Los Angeles and Columbia-trained mechanical engineer, with experience across robotics, product design and machine learning for physical systems.</p>
+        <h3 class="card__name"><span>POL</span> <span>Bernat</span></h3>
+      </li>
+
+      <!-- ── PARTNER 13 · Carla Espallardo ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-13)"><img src="assets/img/partners/carla-espallardo.webp" alt="Portrait of Carla Espallardo" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-13"/></svg>
+        <p class="card__bio">MIT Sloan MBA candidate and Fulbright Scholar focused on finance, financial inclusion and impact investing. Founder of Demarino, with experience across strategy, entrepreneurship and corporate development.</p>
+        <h3 class="card__name"><span>CARLA</span> <span>Espallardo</span></h3>
+      </li>
+
+      <!-- ── PARTNER 14 · Pablo Barrenechea ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-14)"><img src="assets/img/partners/pablo-barranchea.webp" alt="Portrait of Pablo Barrenechea" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-14"/></svg>
+        <p class="card__bio">MIT Sloan MBA candidate with a background in strategy consulting at BCG. His experience spans business strategy and technology, including work with Halluminate, a Y Combinator-backed startup.</p>
+        <h3 class="card__name"><span>PABLO</span> <span>Barrenechea</span></h3>
+      </li>
+
+      <!-- ── PARTNER 15 · Marc Vilalta ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-15)"><img src="assets/img/partners/marc-vilalta.webp" alt="Portrait of Marc Vilalta" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-15"/></svg>
+        <p class="card__bio">Account Executive at Salesforce in Dublin, focused on CRM, AI and digital transformation. Previously worked in venture capital at Enzo Ventures across investment analysis and startup scouting.</p>
+        <h3 class="card__name"><span>MARC</span> <span>Vilalta</span></h3>
+      </li>
+
+      <!-- ── PARTNER 16 · Nacho Vázquez ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-16)"><img src="assets/img/partners/nacho-vazquez.webp" alt="Portrait of Nacho Vázquez" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-16"/></svg>
+        <p class="card__bio">Co-founder of Kinnek and host of Rompiendo el Molde, a podcast profiling leading entrepreneurs and operators. His experience sits at the intersection of entrepreneurship, community building and storytelling.</p>
+        <h3 class="card__name"><span>NACHO</span> <span>Vázquez</span></h3>
+      </li>
+
+      <!-- ── PARTNER 17 · Marc Roura ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-17)"><img src="assets/img/partners/marc-roura.webp" alt="Portrait of Marc Roura" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-17"/></svg>
+        <p class="card__bio">Investment Banking Analyst at J.P. Morgan in New York, with experience across financial analysis and complex transactions and a particular interest in the business of sports.</p>
+        <h3 class="card__name"><span>MARC</span> <span>Roura</span></h3>
+      </li>
+
+      <!-- ── PARTNER 18 · Marc Palet ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-18)"><img src="assets/img/partners/marc-palet.webp" alt="Portrait of Marc Palet" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-18"/></svg>
+        <p class="card__bio">Principal at OM Venture Capital in Singapore, leading investment activity across Southeast Asia. He invests in early-stage fintech, deep tech, climate and AI companies.</p>
+        <h3 class="card__name"><span>MARC</span> <span>Palet</span></h3>
+      </li>
+
+      <!-- ── PARTNER 19 · Jordi Bruna ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-19)"><img src="assets/img/partners/jordi-bruna.webp" alt="Portrait of Jordi Bruna" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-19"/></svg>
+        <p class="card__bio">Consultant at Boston Consulting Group in Madrid and graduate of ESADE Business &amp; Law School, with a background in strategy and problem-solving across complex business environments.</p>
+        <h3 class="card__name"><span>JORDI</span> <span>Bruna</span></h3>
+      </li>
+
+      <!-- ── PARTNER 20 · Javier Galindos ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-20)"><img src="assets/img/partners/javier-galindos.webp" alt="Portrait of Javier Galindos" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-20"/></svg>
+        <p class="card__bio">Forward Deployed Engineer at HappyRobot in Madrid, working on enterprise AI deployments. Former Amazon professional with experience bridging technology, product and customer operations.</p>
+        <h3 class="card__name"><span>JAVIER</span> <span>Galindos</span></h3>
+      </li>
+
+      <!-- ── PARTNER 21 · Jaime De Artiñano ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-21)"><img src="assets/img/partners/jaime-de-artinano.webp" alt="Portrait of Jaime De Artiñano" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-21"/></svg>
+        <p class="card__bio">Senior Value Engineer at Celonis in Dubai, focused on AI, process intelligence and enterprise transformation. He helps organizations translate operational data into strategic and financial value.</p>
+        <h3 class="card__name"><span>JAIME</span> <span>De Artiñano</span></h3>
+      </li>
+
+      <!-- ── PARTNER 22 · Iván De Ramón ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-22)"><img src="assets/img/partners/ivan-de-ramon.webp" alt="Portrait of Iván De Ramón" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-22"/></svg>
+        <p class="card__bio">Co-founder of Convexity, an AI platform automating purchasing and inventory decisions for distributors and manufacturers. Former Microsoft professional with experience across product, ERP and supply-chain technology.</p>
+        <h3 class="card__name"><span>IVAN</span> <span>De Ramón</span></h3>
+      </li>
+
+      <!-- ── PARTNER 23 · Ignacio Faura ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-23)"><img src="assets/img/partners/ignacio-faura.webp" alt="Portrait of Ignacio Faura" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-23"/></svg>
+        <p class="card__bio">Co-founder of Konamigas, a Barcelona-based women’s football and community platform, with prior experience at Qida. His background spans business development, operations and community building.</p>
+        <h3 class="card__name"><span>IGNACIO</span> <span>Faura</span></h3>
+      </li>
+
+      <!-- ── PARTNER 24 · Humbert Quesada ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-24)"><img src="assets/img/partners/humbert-quesada.webp" alt="Portrait of Humbert Quesada" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-24"/></svg>
+        <p class="card__bio">Technical product leader at Oracle focused on AI, data platforms and data-science research and engineering. Based in San Diego, he bridges product strategy and complex technical development.</p>
+        <h3 class="card__name"><span>HUMBERT</span> <span>Quesada</span></h3>
+      </li>
+
+      <!-- ── PARTNER 25 · Francisco Boira ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-25)"><img src="assets/img/partners/francisco-boira.webp" alt="Portrait of Francisco Boira" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-25"/></svg>
+        <p class="card__bio">Aerospace engineer and co-founder of Kreios Space, a space-tech company developing propulsion technology for small satellites. His experience combines deep-tech entrepreneurship, commercialization and business development.</p>
+        <h3 class="card__name"><span>FRANCISCO</span> <span>Boira</span></h3>
+      </li>
+
+      <!-- ── PARTNER 26 · Eduard Alsina ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-26)"><img src="assets/img/partners/eduard-alsina.webp" alt="Portrait of Eduard Alsina" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-26"/></svg>
+        <p class="card__bio">MIT Sloan MBA candidate, Rafael del Pino Scholar and BCG consultant, with experience across strategy, technology and business operations, including work with GoFundMe.</p>
+        <h3 class="card__name"><span>EDUARD</span> <span>Alsina</span></h3>
+      </li>
+
+      <!-- ── PARTNER 27 · Daniel Dones ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-27)"><img src="assets/img/partners/daniel-dones.webp" alt="Portrait of Daniel Dones" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-27"/></svg>
+        <p class="card__bio">Forward Deployed Engineer at HappyRobot in Madrid, working on the deployment of AI solutions for enterprise customers. He combines a strong technical background with experience in a fast-growing technology company.</p>
+        <h3 class="card__name"><span>DANIEL</span> <span>Dones</span></h3>
+      </li>
+
+      <!-- ── PARTNER 28 · Andreu Coret ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-28)"><img src="assets/img/partners/andreu-coret.webp" alt="Portrait of Andreu Coret" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-28"/></svg>
+        <p class="card__bio">Co-founder of ICOGN, a science-led cognitive health brand launched across Spain, Portugal and Andorra. His experience spans consumer product development, brand building and entrepreneurship.</p>
+        <h3 class="card__name"><span>ANDREU</span> <span>Coret</span></h3>
+      </li>
+
+      <!-- ── PARTNER 29 · Alejandro De Diego ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-30)"><img src="assets/img/partners/alejandro-de-diego.webp" alt="Portrait of Alejandro De Diego" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-30"/></svg>
+        <p class="card__bio">Energy technology and markets researcher at Modo Energy in New York and Columbia University graduate. His work focuses on power markets, battery storage and the energy transition.</p>
+        <h3 class="card__name"><span>ALEJANDRO</span> <span>De Diego</span></h3>
+      </li>
+
+      <!-- ── PARTNER 30 · Marcos Valera ── -->
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-29)"><img src="assets/img/partners/marcos-valera.png" alt="Portrait of Marcos Valera" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-29"/></svg>
+        <p class="card__bio">Early member of the GTM team at ElevenLabs, joining when the company had fewer than 50 employees and contributing to its growth to over 800. Previously in enterprise sales at Datadog and co-founder of The Closing Circle, a community for tech sales professionals.</p>
+        <h3 class="card__name"><span>MARCOS</span> <span>Valera</span></h3>
+      </li>
+
+      <!-- ── PLANTILLA PARA UN PARTNER NUEVO (31, 32, 33…) ─────────────────────
+           1. Guarda la foto en assets/img/partners/ (600 × 600 px, fondo transparente).
+           2. Copia las 6 líneas de abajo, de <li class="card"> a </li>, y pégalas
+              FUERA de este comentario: justo encima de él para que salga el último,
+              o entre dos partners para que salga en esa posición.
+           3. En la copia cambia: NOMBRE, Apellido, el fichero de la foto (y su alt)
+              y la bio.
+           4. Forma de la máscara: sustituye las dos XX por un mismo número del 01
+              al 30 (blob-07 y lines-07, por ejemplo). Hay 30 formas y se pueden
+              repetir; elige una que no usen las tarjetas de al lado.
+
+      <li class="card">
+        <div class="card__pic" style="clip-path:url(#blob-XX)"><img src="assets/img/partners/nombre-apellido.webp" alt="Portrait of Nombre Apellido" width="600" height="600" loading="lazy" decoding="async"></div>
+        <svg class="card__lines" viewBox="0 0 600 600" aria-hidden="true"><use href="#lines-XX"/></svg>
+        <p class="card__bio">Texto de la bio en inglés, 2–4 líneas.</p>
+        <h3 class="card__name"><span>NOMBRE</span> <span>Apellido</span></h3>
+      </li>
+
+           La última fila se ajusta sola: si quedan 1 o 2 tarjetas sueltas, se
+           ensanchan para ocupar todo el ancho. -->
+
+      </ul>
+    </section>
+
+    <!-- ===================== CIERRE / CONTACTO =====================
+         Las dos frases finales son los <p> de abajo. Si cambia el número de partners,
+         revisa el "30" de esta frase, el del titular de THE PARTNER NETWORK y los del hero. -->
+    <section class="closing" id="contact" aria-label="Contact">
+      <img class="closing__rider" src="assets/img/anza-rider.webp" alt="" width="1727" height="972" loading="lazy" decoding="async">
+      <div class="closing__sun"></div>
+      <div class="closing__haze"></div>
+      <p class="closing__lead">Juan Bautista de Anza forged the first overland route to San Francisco.</p>
+      <p class="closing__main">Today, 30 operators will support your expedition.</p>
+      <!-- BOTÓN DE CONTACTO: al pulsarlo copia el email al portapapeles y lo muestra
+           en el propio botón. Para cambiar la dirección, edita data-email="…". -->
+      <button class="closing__cta" type="button" id="submit-project" data-email="hello@anza30.com" aria-live="polite">Submit your project</button>
+    </section>
+
   </div>
-</section>
-<section class="cta">
-  <div class="container cta-inner"><a class="cta-link" href="#">Partner Area ↗</a></div>
-</section>
-<footer><div class="container footer-inner"><p class="label">anza30 © 2026</p></div></footer>
-<script>
-(function(){
-  const els=document.querySelectorAll('.reveal');
-  if(!('IntersectionObserver' in window)){els.forEach(e=>e.classList.add('visible'));return;}
-  const obs=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');obs.unobserve(entry.target);}})},{threshold:.15,rootMargin:'0px 0px -8% 0px'});
-  els.forEach(e=>obs.observe(e));
-})();
-</script>
+</main>
+
+</div>
+
+<!-- Animaciones e interacciones. Debe ir al final; no hace falta tocarlo. -->
+<script src="js/main.js"></script>
 </body>
 </html>
