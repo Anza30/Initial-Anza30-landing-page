@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anza30</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Georgia&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0F1F3D; --navy-mid: #1A3460; --navy-light: #243D6E;
+    --gold: #C9A84C; --gold-light: #F0E6C8;
+    --off-white: #F7F5F0; --surface: #FFFFFF;
+    --border: #E2DDD5; --border-strong: #C5BFB5;
+    --text: #1A1A1A; --text-mid: #4A4A4A; --text-muted: #8A8680;
+    --green: #2D6A4F; --green-bg: #EAF4EF;
+    --red: #8B2020; --red-bg: #F9ECEC;
+    --amber: #7A5C00; --amber-bg: #FBF4E0;
+    --dead-bg: #F3F0F5; --dead: #5A3E6B;
+    --sidebar-w: 220px;
+    --radius: 10px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text); font-size: 13.5px; line-height: 1.5; min-height: 100vh; }
+
+  /* LOGIN */
+  #login-screen { position: fixed; inset: 0; background: var(--navy); display: flex; align-items: center; justify-content: center; z-index: 1000; padding: 20px; }
+  .login-box { background: var(--surface); width: 100%; max-width: 360px; padding: 36px; border-radius: var(--radius); }
+  .login-logo { font-family: 'Georgia', serif; font-size: 22px; color: var(--navy); margin-bottom: 4px; }
+  .login-tagline { font-size: 11.5px; color: var(--text-muted); margin-bottom: 32px; letter-spacing: 0.03em; }
+  .login-label { font-size: 11px; font-weight: 500; color: var(--text-mid); margin-bottom: 5px; display: block; }
+  .login-input { width: 100%; padding: 10px 12px; border: 1px solid var(--border); background: var(--off-white); font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text); margin-bottom: 14px; outline: none; border-radius: 6px; -webkit-appearance: none; }
+  .login-input:focus { border-color: var(--navy); }
+  .login-btn { width: 100%; padding: 11px; background: var(--navy); color: white; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 500; border: none; cursor: pointer; border-radius: 6px; -webkit-appearance: none; }
+  .login-btn:disabled { opacity: 0.6; }
+  .login-error { font-size: 12px; color: var(--red); margin-top: 10px; display: none; }
+  .login-gold-bar { height: 3px; background: var(--gold); margin-bottom: 32px; border-radius: 2px; }
+  #app { display: none; min-height: 100vh; }
+
+  /* MOBILE TOGGLE */
+  .mobile-menu-btn { display: none; background: none; border: none; cursor: pointer; padding: 6px; color: var(--navy); border-radius: 6px; -webkit-tap-highlight-color: transparent; }
+  .mobile-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.45); z-index: 90; }
+  .mobile-overlay.open { display: block; }
+
+  /* SIDEBAR */
+  .sidebar { position: fixed; top: 0; left: 0; bottom: 0; width: var(--sidebar-w); background: var(--navy); display: flex; flex-direction: column; z-index: 100; transition: transform 0.25s ease; overflow-y: auto; }
+  .sidebar-brand { padding: 24px 20px 18px; border-bottom: 1px solid var(--navy-light); flex-shrink: 0; }
+  .sidebar-brand-name { font-family: 'Georgia', serif; font-size: 18px; color: white; line-height: 1; }
+  .sidebar-gold { height: 2px; background: var(--gold); margin: 10px 0 0; width: 28px; border-radius: 1px; }
+  .sidebar-nav { flex: 1; padding: 12px 0; }
+  .nav-section-label { font-size: 10px; font-weight: 500; color: rgba(255,255,255,0.3); padding: 10px 20px 5px; letter-spacing: 0.08em; }
+  .nav-item { display: flex; align-items: center; gap: 10px; padding: 9px 20px; color: rgba(255,255,255,0.6); cursor: pointer; font-size: 13px; transition: all 0.1s; border-left: 2px solid transparent; -webkit-tap-highlight-color: transparent; }
+  .nav-item:hover, .nav-item:active { color: white; background: rgba(255,255,255,0.06); }
+  .nav-item.active { color: white; border-left-color: var(--gold); background: rgba(255,255,255,0.08); }
+  .nav-badge { margin-left: auto; background: var(--gold); color: var(--navy); font-size: 10px; font-weight: 700; padding: 1px 6px; border-radius: 10px; }
+  .sidebar-footer { padding: 14px 20px; border-top: 1px solid var(--navy-light); flex-shrink: 0; }
+  .sidebar-user { font-weight: 500; color: rgba(255,255,255,0.7); margin-bottom: 2px; font-size: 12px; }
+  .sidebar-since { font-size: 11px; color: rgba(255,255,255,0.3); }
+  .sidebar-logout { font-size: 11px; color: rgba(255,255,255,0.3); cursor: pointer; margin-top: 8px; display: inline-block; -webkit-tap-highlight-color: transparent; }
+  .sidebar-logout:hover { color: rgba(255,255,255,0.6); }
+
+  /* MAIN */
+  .main { margin-left: var(--sidebar-w); min-height: 100vh; display: flex; flex-direction: column; }
+  .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
+  .topbar-left { display: flex; align-items: center; gap: 12px; }
+  .topbar-title { font-size: 14px; font-weight: 500; color: var(--navy); }
+  .topbar-pill { font-size: 11px; background: var(--gold-light); color: var(--amber); padding: 3px 10px; font-weight: 500; border-radius: 20px; white-space: nowrap; }
+  .content { padding: 24px; flex: 1; max-width: 980px; width: 100%; }
+
+  /* PAGES */
+  .page { display: none; }
+  .page.active { display: block; }
+  .page-heading { font-family: 'Georgia', serif; font-size: 22px; color: var(--navy); margin-bottom: 4px; font-weight: normal; }
+  .page-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 22px; }
+  .section-label { font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+
+  /* STAT GRID */
+  .stat-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 24px; }
+  .stat-cell { background: var(--surface); padding: 14px 16px; }
+  .stat-label { font-size: 10px; color: var(--text-muted); margin-bottom: 5px; }
+  .stat-value { font-size: 20px; font-weight: 300; color: var(--navy); font-family: 'Georgia', serif; }
+  .stat-value.gold { color: var(--gold); }
+  .stat-value.green { color: var(--green); }
+
+  /* ANNOUNCE */
+  .announce-bar { background: var(--gold-light); border-left: 3px solid var(--gold); padding: 12px 16px; margin-bottom: 20px; display: flex; gap: 10px; align-items: flex-start; border-radius: 0 8px 8px 0; }
+  .announce-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold); flex-shrink: 0; margin-top: 5px; }
+  .announce-title { font-weight: 500; font-size: 13px; color: var(--amber); }
+  .announce-body { font-size: 12px; color: var(--amber); opacity: 0.85; margin-top: 2px; }
+
+  /* DEAL CARDS */
+  .deal-card { background: var(--surface); border: 1px solid var(--border); margin-bottom: 8px; border-radius: var(--radius); overflow: hidden; }
+  .deal-card-header { padding: 14px 16px; display: flex; align-items: center; gap: 14px; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+  .deal-card-header:hover { background: var(--off-white); }
+  .deal-sector-tag { font-size: 10px; font-weight: 500; background: var(--off-white); color: var(--text-muted); padding: 2px 8px; margin-bottom: 4px; display: inline-block; letter-spacing: 0.04em; border-radius: 4px; }
+  .deal-name { font-family: 'Georgia', serif; font-size: 14px; color: var(--navy); margin-bottom: 2px; }
+  .deal-meta { font-size: 11px; color: var(--text-muted); }
+  .deal-right { margin-left: auto; display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
+  .deadline-tag { font-size: 11px; color: var(--amber); font-weight: 500; white-space: nowrap; }
+  .status-dot { display: inline-flex; align-items: center; gap: 5px; font-size: 11px; font-weight: 500; white-space: nowrap; }
+  .status-dot::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .status-dot.open { color: var(--green); }
+  .status-dot.open::before { background: var(--green); }
+
+  /* VOTE STRIP */
+  .vote-strip { padding: 8px 16px; background: var(--off-white); border-top: 1px solid var(--border); display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .vote-strip-verdict { display: flex; flex-direction: column; gap: 2px; flex-shrink: 0; min-width: 60px; }
+  .vs-label { font-size: 11px; font-weight: 400; color: var(--text-muted); }
+  .vs-label.active-green { font-weight: 700; color: var(--green); }
+  .vs-label.active-red { font-weight: 700; color: var(--red); }
+  .vote-strip-bar-wrap { flex: 1; min-width: 80px; }
+  .vote-strip-track { height: 4px; background: var(--border); position: relative; border-radius: 2px; }
+  .vote-strip-fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 2px; }
+  .vote-strip-threshold { position: absolute; top: -4px; bottom: -4px; width: 1.5px; background: var(--navy); opacity: 0.2; }
+  .vote-strip-pct { font-size: 14px; font-weight: 600; font-family: 'Georgia', serif; white-space: nowrap; flex-shrink: 0; }
+  .vote-strip-quorum { font-size: 11px; color: var(--text-muted); white-space: nowrap; flex-shrink: 0; text-align: right; }
+  .qs-label { display: block; margin-bottom: 1px; }
+  .qs-val { font-weight: 600; }
+
+  /* DEAL EXPAND */
+  .deal-expand { background: var(--off-white); border-top: 1px solid var(--border); max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .deal-expand.open { max-height: 900px; }
+  .deal-expand-inner { padding: 16px; }
+  .deal-expand-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 12px; margin-bottom: 14px; }
+  .deal-field-label { font-size: 10px; color: var(--text-muted); margin-bottom: 3px; }
+  .deal-field-value { font-size: 12.5px; font-weight: 500; color: var(--navy); }
+
+  /* INLINE VOTE */
+  .inline-vote { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; }
+  .inline-vote-title { font-size: 11px; font-weight: 500; color: var(--text-muted); margin-bottom: 10px; }
+  .vblocks { display: flex; gap: 2px; margin-bottom: 12px; }
+  .vblock { flex: 1; padding: 8px 4px; text-align: center; background: var(--off-white); border-radius: 6px; }
+  .vblock-num { font-family: 'Georgia', serif; font-size: 20px; font-weight: normal; line-height: 1; margin-bottom: 3px; }
+  .vblock-num.invest { color: var(--green); }
+  .vblock-num.pass { color: var(--red); }
+  .vblock-num.abstain { color: var(--text-muted); }
+  .vblock-label { font-size: 10px; color: var(--text-muted); }
+  .prog-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .prog-label { font-size: 11px; color: var(--text-muted); width: 44px; }
+  .prog-track { flex: 1; height: 3px; background: var(--border); border-radius: 2px; }
+  .prog-fill { height: 100%; border-radius: 2px; }
+  .prog-fill.i { background: var(--green); }
+  .prog-fill.p { background: var(--red); }
+  .prog-fill.a { background: var(--border-strong); }
+  .prog-pct { font-size: 11px; color: var(--text-mid); width: 30px; text-align: right; }
+  .quorum-bar { margin-top: 10px; padding: 8px 12px; font-size: 11.5px; font-weight: 500; border-radius: 6px; }
+  .quorum-bar.pass { background: var(--green-bg); color: var(--green); }
+  .quorum-bar.fail { background: var(--amber-bg); color: var(--amber); }
+
+  /* BUTTONS */
+  .deal-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+  .btn { padding: 8px 16px; font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 500; cursor: pointer; border: none; transition: opacity 0.15s; text-decoration: none; display: inline-flex; align-items: center; border-radius: 6px; -webkit-tap-highlight-color: transparent; }
+  .btn:hover { opacity: 0.82; }
+  .btn-primary { background: var(--navy); color: white; }
+  .btn-gold { background: var(--gold); color: var(--navy); }
+  .btn-outline { background: transparent; color: var(--navy); border: 1px solid var(--border-strong); }
+  .btn-sm { padding: 5px 10px; font-size: 11px; }
+
+  /* DATA TABLE */
+  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: var(--radius); }
+  .data-table { width: 100%; border-collapse: collapse; background: var(--surface); }
+  .data-table th { text-align: left; font-size: 10px; font-weight: 500; color: var(--text-muted); padding: 10px 12px; border-bottom: 2px solid var(--navy); white-space: nowrap; }
+  .data-table td { padding: 10px 12px; border-bottom: 1px solid var(--border); font-size: 12px; color: var(--text); vertical-align: middle; }
+  .data-table tr:last-child td { border-bottom: none; }
+  .data-table tr:hover td { background: var(--off-white); }
+  .data-table .num { font-family: 'Georgia', serif; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 500; padding: 2px 8px; border-radius: 20px; }
+  .tag-active { background: var(--green-bg); color: var(--green); }
+  .tag-exited { background: var(--off-white); color: var(--text-muted); }
+  .tag-dead { background: var(--dead-bg); color: var(--dead); }
+  .tag-invested { background: var(--green-bg); color: var(--green); }
+  .tag-passed { background: var(--off-white); color: var(--text-muted); }
+
+  /* PORTFOLIO */
+  .port-grid { display: flex; flex-direction: column; gap: 10px; }
+  .port-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+  .port-card-header { padding: 16px 20px 12px; display: flex; align-items: flex-start; gap: 14px; border-bottom: 1px solid var(--border); }
+  .port-logo { width: 40px; height: 40px; border-radius: 8px; border: 1px solid var(--border); overflow: hidden; display: flex; align-items: center; justify-content: center; flex-shrink: 0; background: var(--off-white); }
+  .port-logo img { width: 100%; height: 100%; object-fit: contain; }
+  .port-logo-fallback { font-family: 'Georgia', serif; font-size: 15px; color: var(--navy); }
+  .port-header-info { flex: 1; min-width: 0; }
+  .port-company-name { font-family: 'Georgia', serif; font-size: 16px; color: var(--navy); margin-bottom: 2px; font-weight: normal; }
+  .port-company-sub { font-size: 11px; color: var(--text-muted); }
+  .port-header-right { text-align: right; flex-shrink: 0; }
+  .port-moic { font-family: 'Georgia', serif; font-size: 20px; color: var(--green); line-height: 1; margin-bottom: 2px; }
+  .port-moic-label { font-size: 10px; color: var(--text-muted); }
+  .port-metrics { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; background: var(--border); border-bottom: 1px solid var(--border); }
+  .port-metric { background: var(--surface); padding: 10px 14px; }
+  .port-metric-label { font-size: 10px; color: var(--text-muted); margin-bottom: 3px; }
+  .port-metric-value { font-size: 13px; font-weight: 500; color: var(--navy); font-family: 'Georgia', serif; }
+  .port-metric-value.pos { color: var(--green); }
+  .port-update { padding: 10px 20px; font-size: 12px; color: var(--text-mid); line-height: 1.6; display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+  .port-update-text strong { color: var(--navy); font-size: 11px; letter-spacing: 0.04em; margin-right: 6px; }
+  .port-docs { padding: 8px 20px 12px; display: flex; gap: 8px; flex-wrap: wrap; border-top: 1px solid var(--border); }
+
+  /* ARCHIVE */
+  .arch-month-label { font-size: 11px; font-weight: 500; color: var(--text-muted); letter-spacing: 0.05em; padding: 10px 0 6px; margin-top: 18px; border-bottom: 1px solid var(--border); margin-bottom: 6px; }
+  .arch-month-label:first-child { margin-top: 0; }
+
+  /* ── PARTNERS ── */
+  .p-sort-bar { display: flex; align-items: center; gap: 8px; margin-bottom: 16px; flex-wrap: wrap; }
+  .p-sort-label { font-size: 12px; color: var(--text-muted); margin-right: 2px; }
+  .p-sort-btn { font-size: 12px; padding: 5px 16px; border-radius: 20px; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-muted); cursor: pointer; transition: all 0.12s; font-family: 'Inter', sans-serif; }
+  .p-sort-btn.on { background: var(--navy); color: var(--gold); border-color: var(--navy); font-weight: 500; }
+  .p-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; }
+  .p-card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 16px 14px; cursor: pointer; transition: border-color 0.12s; }
+  .p-card:hover { border-color: var(--border-strong); }
+  .p-card.open { border-color: var(--navy); }
+  .p-ini { width: 36px; height: 36px; border-radius: 8px; background: var(--navy); color: var(--gold); font-size: 12px; font-weight: 500; display: flex; align-items: center; justify-content: center; margin-bottom: 10px; font-family: 'Georgia', serif; }
+  .p-name { font-size: 13px; font-weight: 600; color: var(--navy); line-height: 1.25; margin-bottom: 3px; font-family: 'Georgia', serif; }
+  .p-loc { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+  .p-bg { font-size: 11px; color: var(--text-mid); line-height: 1.35; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+  .p-detail { display: none; margin-top: 12px; padding-top: 12px; border-top: 1px solid var(--border); }
+  .p-card.open .p-detail { display: block; }
+  .p-row { display: flex; gap: 8px; margin-bottom: 5px; align-items: baseline; }
+  .p-dlabel { font-size: 10.5px; color: var(--text-muted); min-width: 62px; flex-shrink: 0; }
+  .p-dval { font-size: 12px; color: var(--text-mid); word-break: break-word; }
+  .p-dval a { color: var(--navy); text-decoration: none; }
+  .p-dval a:hover { text-decoration: underline; }
+  .partners-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .partner-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    cursor: pointer;
+    transition: border-color 0.15s, box-shadow 0.15s;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+  }
+  .partner-card:hover { border-color: var(--border-strong); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .partner-card-initials {
+    width: 36px; height: 36px; border-radius: 8px;
+    background: var(--navy); color: white;
+    font-family: 'Georgia', serif; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 10px;
+  }
+  .partner-card-name { font-size: 12.5px; font-weight: 600; color: var(--navy); margin-bottom: 3px; font-family: 'Georgia', serif; line-height: 1.2; }
+  .partner-card-location { font-size: 11px; color: var(--text-muted); margin-bottom: 4px; }
+  .partner-card-bg { font-size: 11px; color: var(--text-mid); line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+
+  /* Partner modal overlay */
+  .partner-modal-overlay {
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.5); z-index: 200;
+    align-items: center; justify-content: center;
+    padding: 20px;
+  }
+  .partner-modal-overlay.open { display: flex; }
+  .partner-modal {
+    background: var(--surface);
+    border-radius: 14px;
+    width: 100%; max-width: 440px;
+    max-height: 90vh; overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+    animation: modalIn 0.2s ease;
+  }
+  @keyframes modalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to   { opacity: 1; transform: scale(1) translateY(0); }
+  }
+  .partner-modal-header {
+    padding: 20px 20px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: flex-start; justify-content: space-between; gap: 12px;
+  }
+  .partner-modal-initials {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: var(--navy); color: white;
+    font-family: 'Georgia', serif; font-size: 16px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .partner-modal-name { font-family: 'Georgia', serif; font-size: 18px; color: var(--navy); margin-bottom: 2px; font-weight: normal; }
+  .partner-modal-sub { font-size: 12px; color: var(--text-muted); }
+  .partner-modal-close {
+    width: 30px; height: 30px; border-radius: 50%;
+    background: var(--off-white); border: none; cursor: pointer;
+    font-size: 16px; color: var(--text-muted);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; -webkit-tap-highlight-color: transparent;
+  }
+  .partner-modal-body { padding: 16px 20px; display: flex; flex-direction: column; gap: 10px; }
+  .partner-modal-field { display: flex; gap: 10px; align-items: flex-start; }
+  .partner-modal-label { font-size: 10.5px; color: var(--text-muted); min-width: 80px; padding-top: 1px; }
+  .partner-modal-value { font-size: 13px; color: var(--text-mid); flex: 1; word-break: break-word; }
+
+  /* FINANCES */
+  .fin-summary { display: grid; grid-template-columns: repeat(2,1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; margin-bottom: 20px; }
+  .fin-cell { background: var(--surface); padding: 14px 18px; display: flex; justify-content: space-between; align-items: baseline; }
+  .fin-cell-label { font-size: 12px; color: var(--text-muted); }
+  .fin-cell-value { font-family: 'Georgia', serif; font-size: 17px; color: var(--navy); }
+
+  /* KNOWLEDGE HUB */
+  .kb-filters { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+  .kb-filter-btn {
+    padding: 5px 14px; font-family: 'Inter', sans-serif; font-size: 12px;
+    border: 1px solid var(--border); background: var(--surface);
+    color: var(--text-muted); border-radius: 20px; cursor: pointer;
+    transition: all 0.15s; -webkit-tap-highlight-color: transparent;
+  }
+  .kb-filter-btn.active { background: var(--navy); color: white; border-color: var(--navy); }
+  .kb-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+  .kb-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: var(--radius); overflow: hidden;
+    text-decoration: none; display: flex; flex-direction: column;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .kb-card:hover { border-color: var(--border-strong); box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+  .kb-card-body { padding: 14px 16px; flex: 1; }
+  .kb-card-type { font-size: 10px; font-weight: 600; color: var(--text-muted); letter-spacing: 0.06em; margin-bottom: 6px; }
+  .kb-card-title { font-size: 13px; font-weight: 500; color: var(--navy); line-height: 1.35; margin-bottom: 6px; }
+  .kb-card-desc { font-size: 11.5px; color: var(--text-muted); line-height: 1.45; display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .kb-card-footer { padding: 8px 16px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .kb-card-date { font-size: 10.5px; color: var(--text-muted); }
+  .kb-card-arrow { font-size: 14px; color: var(--navy); }
+  .kb-type-pill { display: inline-block; font-size: 10px; font-weight: 500; padding: 1px 7px; border-radius: 20px; margin-bottom: 8px; }
+  .kb-type-Article { background: #E8EFF8; color: #1B3A6B; }
+  .kb-type-Podcast { background: #F0E6C8; color: #7A5C00; }
+  .kb-type-Tool    { background: #EAF4EF; color: #2D6A4F; }
+  .kb-type-Video   { background: #F9ECEC; color: #8B2020; }
+  .kb-type-Report  { background: #F3F0F5; color: #5A3E6B; }
+  .kb-type-Screenshot { background: #E8EFF8; color: #1B3A6B; }
+  .kb-empty { font-size: 12px; color: var(--text-muted); padding: 20px 0; }
+
+  /* MISC */
+  .note-block { background: var(--amber-bg); border-left: 3px solid var(--gold); padding: 10px 14px; font-size: 12px; color: var(--amber); margin-bottom: 16px; border-radius: 0 6px 6px 0; }
+  .sheet-embed-label { font-size: 10.5px; color: var(--text-muted); margin-bottom: 8px; display: flex; align-items: center; gap: 6px; }
+  .live-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--green); display: inline-block; }
+  hr.divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    .partners-grid { grid-template-columns: repeat(2,1fr); }
+    .p-grid { grid-template-columns: repeat(2,1fr); }
+    .kb-grid { grid-template-columns: repeat(2,1fr); }
+  }
+  @media (max-width: 768px) {
+    :root { --sidebar-w: 0px; }
+    .sidebar { transform: translateX(-220px); width: 220px; }
+    .sidebar.open { transform: translateX(0); }
+    .main { margin-left: 0; }
+    .mobile-menu-btn { display: flex; }
+    .stat-grid { grid-template-columns: repeat(2,1fr); }
+    .deal-expand-grid { grid-template-columns: 1fr; }
+    .port-metrics { grid-template-columns: repeat(2,1fr); }
+    .fin-summary { grid-template-columns: 1fr; }
+    .partners-grid { grid-template-columns: repeat(2,1fr); }
+    .p-grid { grid-template-columns: repeat(2,1fr); }
+    .kb-grid { grid-template-columns: repeat(2,1fr); }
+    .content { padding: 16px; }
+    .topbar { padding: 0 16px; }
+    .deal-right { flex-direction: column; align-items: flex-end; gap: 4px; }
+    .port-card-header { gap: 10px; }
+  }
+  @media (max-width: 480px) {
+    .stat-grid { grid-template-columns: repeat(2,1fr); }
+    .partners-grid { grid-template-columns: 1fr; }
+    .p-grid { grid-template-columns: 1fr; }
+    .kb-grid { grid-template-columns: 1fr; }
+    .deal-actions { flex-direction: column; }
+    .deal-actions .btn { text-align: center; justify-content: center; }
+    .partner-modal { max-width: 100%; margin: 0; border-radius: 14px 14px 0 0; }
+    .partner-modal-overlay { align-items: flex-end; padding: 0; }
+    .vblocks { gap: 1px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-box">
+    <div class="login-gold-bar"></div>
+    <div class="login-logo">Anza30</div>
+    <div class="login-tagline">Member Portal — Private Access</div>
+    <label class="login-label">Email address</label>
+    <input class="login-input" id="login-email" type="email" placeholder="your@email.com" autocomplete="email">
+    <label class="login-label">Password</label>
+    <input class="login-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+    <button class="login-btn" onclick="doLogin()">Sign in</button>
+    <div class="login-error" id="login-error">Incorrect email or password.</div>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="mobile-overlay" id="mobile-overlay" onclick="toggleSidebar()"></div>
+  <nav class="sidebar" id="sidebar">
+    <div class="sidebar-brand">
+      <div class="sidebar-brand-name">anza30</div>
+      <div class="sidebar-gold"></div>
+    </div>
+    <div class="sidebar-nav">
+      <div class="nav-section-label">Overview</div>
+      <div class="nav-item active" onclick="showPage('home',this)">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1.5L1 7h2v7h4v-4h2v4h4V7h2L8 1.5z"/></svg>
+        Home
+      </div>
+      <div class="nav-section-label">Deals</div>
+      <div class="nav-item" onclick="showPage('deals',this)">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h12v12H2V2zm1 1v10h10V3H3zm2 2h6v1H5V5zm0 2h6v1H5V7zm0 2h4v1H5V9z"/></svg>
+        Live Deals
+        <span class="nav-badge"></span>
+      </div>
+      <div class="nav-item" onclick="showPage('archive',this)">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 3h12v2H2V3zm1 3h10v8H3V6zm2 2v1h6V8H5zm0 2v1h4v-1H5z"/></svg>
+        Archive
+      </div>
+      <div class="nav-section-label">Fund</div>
+      <div class="nav-item" onclick="showPage('portfolio',this)">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M1 11l4-4 3 3 4-5 3 2v4H1v-1zm0-8h14v1H1V3z"/></svg>
+        Portfolio
+      </div>
+
+      <div class="nav-item" onclick="showPage('partners',this)">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a3 3 0 100-6 3 3 0 000 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3z"/></svg>
+        Partners
+      </div>
+
+      <div class="nav-section-label">Resources</div>
+      <div class="nav-item" onclick="showPage('knowledge',this)">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2h12v1H2V2zm0 3h12v1H2V5zm0 3h8v1H2V8zm0 3h10v1H2v-1zM11 8l4 3-4 3V8z"/></svg>
+        Knowledge Hub
+      </div>
+    </div>
+    <div class="sidebar-footer">
+      <div class="sidebar-user" id="sidebar-username">—</div>
+      <div class="sidebar-since">Partner since 2026</div>
+      <span class="sidebar-logout" onclick="doLogout()">Sign out</span>
+    </div>
+  </nav>
+
+  <div class="main">
+    <div class="topbar">
+      <div class="topbar-left">
+        <button class="mobile-menu-btn" onclick="toggleSidebar()" aria-label="Menu">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><rect y="3" width="20" height="2"/><rect y="9" width="20" height="2"/><rect y="15" width="20" height="2"/></svg>
+        </button>
+        <div class="topbar-title" id="topbar-title">Home</div>
+      </div>
+      <span class="topbar-pill" id="topbar-pill">— votes open</span>
+    </div>
+
+    <div class="content">
+
+      <!-- HOME -->
+      <div class="page active" id="page-home">
+        <div class="page-heading">Welcome back</div>
+        <div class="page-sub" id="home-sub">anza30</div>
+
+        <div class="stat-grid">
+          <div class="stat-cell"><div class="stat-label">Active deals</div><div class="stat-value gold" id="stat-active-deals">—</div></div>
+          <div class="stat-cell"><div class="stat-label">Portfolio companies</div><div class="stat-value" id="stat-portfolio-count">—</div></div>
+          <div class="stat-cell"><div class="stat-label">Capital deployed</div><div class="stat-value" id="stat-capital">—</div></div>
+          <div class="stat-cell"><div class="stat-label">Portfolio MOIC</div><div class="stat-value green" id="stat-moic">—</div></div>
+        </div>
+
+        <div class="section-label">Open votes</div>
+        <div id="home-deals-container">
+          <div style="font-size:12px;color:var(--text-muted);padding:16px 0;">Loading deals...</div>
+        </div>
+      </div>
+
+      <!-- LIVE DEALS -->
+      <div class="page" id="page-deals">
+        <div class="page-heading">Live Deals</div>
+        <div class="page-sub">Active opportunities under review · expand each deal to vote</div>
+
+        <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;">
+          <div style="font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.05em;margin-bottom:10px;">DEAL INTAKE PROCESS</div>
+          <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
+            <a href="REPLACE_WITH_QUALIFYING_QUESTIONNAIRE_URL" target="_blank" class="btn btn-primary">
+              Step 1 — Qualifying questionnaire
+            </a>
+            <div style="display:flex;align-items:center;gap:6px;color:var(--text-muted);font-size:12px;flex-shrink:0;">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0"><path d="M6 3l5 5-5 5V3z"/></svg>
+              Must pass Step 1 to proceed
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0"><path d="M6 3l5 5-5 5V3z"/></svg>
+            </div>
+            <a href="https://tally.so/r/VLr2EE" target="_blank" class="btn btn-outline">
+              Step 2 — Due Diligence questionnaire
+            </a>
+          </div>
+          <div style="font-size:11px;color:var(--text-muted);margin-top:8px;">Both can be submitted simultaneously — Step 2 is only reviewed if Step 1 is approved.</div>
+        </div>
+
+        <div class="note-block">
+          Deal materials are stored in Google Drive. Use the Pitch Deck and DD Report buttons to open each file directly — you'll need your club Gmail. All deal discussion happens on WhatsApp.
+        </div>
+        <div class="section-label">Currently voting</div>
+        <div id="deals-page-container">
+          <div style="font-size:12px;color:var(--text-muted);padding:16px 0;">Loading deals...</div>
+        </div>
+      </div>
+
+      <!-- ARCHIVE -->
+      <div class="page" id="page-archive">
+        <div class="page-heading">Deal Archive</div>
+        <div class="page-sub">All reviewed deals · voting summary · materials in Drive</div>
+        <div id="archive-container">
+          <div style="font-size:12px;color:var(--text-muted);padding:16px 0;">Loading archive...</div>
+        </div>
+      </div>
+
+      <!-- PORTFOLIO -->
+      <div class="page" id="page-portfolio">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:4px;flex-wrap:wrap;gap:10px;">
+          <div class="page-heading">Portfolio</div>
+          <a href="https://docs.google.com/spreadsheets/d/1CHjFlxosvtSI1OLWdD8tnXp_VWDxS7GwU8ePvgExtFk/edit#gid=0" target="_blank" class="btn btn-outline" style="margin-top:4px;">Finances ↗</a>
+        </div>
+        <div class="page-sub">Active investments · NAV and MOIC are manager estimates, not marked valuations</div>
+        <div id="portfolio-container">
+          <div style="font-size:12px;color:var(--text-muted);padding:16px 0;">Loading portfolio...</div>
+        </div>
+      </div>
+
+      <!-- FINANCES -->
+
+      <!-- PARTNERS -->
+      <!-- PARTNER MODAL -->
+      <div class="partner-modal-overlay" id="partner-modal-overlay" onclick="closePartnerModal(event)">
+        <div class="partner-modal" id="partner-modal">
+          <div class="partner-modal-header">
+            <div style="display:flex;gap:12px;align-items:flex-start;flex:1;">
+              <div class="partner-modal-initials" id="modal-initials">—</div>
+              <div>
+                <div class="partner-modal-name" id="modal-name">—</div>
+                <div class="partner-modal-sub" id="modal-sub">—</div>
+              </div>
+            </div>
+            <button class="partner-modal-close" onclick="closePartnerModal()">✕</button>
+          </div>
+          <div class="partner-modal-body" id="modal-body"></div>
+        </div>
+      </div>
+
+      <div class="page" id="page-partners">
+        <div class="page-heading">Partners</div>
+        <div class="page-sub" id="partners-sub">anza30 · founded 2026</div>
+        <div class="p-sort-bar">
+          <span class="p-sort-label">Sort by</span>
+          <button class="p-sort-btn on" id="psort-name" onclick="sortPartners('name',this)">Name</button>
+          <button class="p-sort-btn" id="psort-city" onclick="sortPartners('city',this)">City</button>
+        </div>
+        <div class="p-grid" id="partners-grid"></div>
+      </div>
+
+      <!-- KNOWLEDGE HUB -->
+      <div class="page" id="page-knowledge">
+        <div class="page-heading">Knowledge Hub</div>
+        <div class="page-sub">Curated resources · articles, podcasts, tools and inspiration</div>
+        <div class="kb-filters" id="kb-filters">
+          <button class="kb-filter-btn active" onclick="filterKB('All',this)">All</button>
+        </div>
+        <div class="kb-grid" id="kb-grid">
+          <div class="kb-empty">Loading resources...</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// APPS SCRIPT ENDPOINTS
+// ══════════════════════════════════════════════
+const APPS_SCRIPT_URL   = 'https://script.google.com/macros/s/AKfycbzhxccXLFnjVjuSUudqC2e98AzMswCbnm4ZbQRC9hjJasfheWT9-32I9LDwP4D12w5_/exec';
+const PORTFOLIO_URL     = 'https://script.google.com/macros/s/AKfycby8QLZ01uvFXcMBKjo7jAHAoHPjOlSl01UGl6-DF4ZPSNmQelRk53HST1ZPc8VLyC_Ecw/exec';
+const DIRECTORY_URL     = 'https://script.google.com/macros/s/AKfycbyclOZjOdBr-Ot7g81_TnxqnkO-Cb2FgoP_jMx4zkiIAUD7CGpUG_rozHnEhE-ei-POXQ/exec';
+
+// Partners count comes from the Directory sheet (rows with an Email). No hardcoded number.
+function totalPartners() { return PARTNERS.filter(p => p['Email']).length; }
+const QUORUM_PCT     = 0.5;
+const PASS_PCT       = 0.66;
+
+// ══════════════════════════════════════════════
+// STATE
+// ══════════════════════════════════════════════
+let currentUser = null;   // full partner object from Sheet
+let PARTNERS    = [];     // all partners loaded from Directory Sheet
+let DEALS       = [];
+
+// ══════════════════════════════════════════════
+// NAME HELPERS
+// ══════════════════════════════════════════════
+const DISPLAY_NAMES = {
+  'oscar.toca@gmail.com':          'Oscar de Toca',
+  'jaimedeartinano@gmail.com':     'Jaime de Artiñano',
+  'alvartingut@gmail.com':         'Álvaro de Artiñano',
+  'ivanderamon@theconvexity.com':  'Ivan de Ramon',
+  'nachovazquezn@gmail.com':       'Nacho Vázquez',
+  'ngalianaruizdeadana@gmail.com': 'Nacho Galiana',
+  'quiquevives1999@gmail.com':         'Quique Vives',
+  'ad4026@columbia.edu':           'Alex de Diego',
+};
+
+function shortName(p) {
+  // p is a Sheet row object: {Email, FirstName, LastName, ...}
+  const email = (p['Email'] || '').toLowerCase();
+  if (DISPLAY_NAMES[email]) return DISPLAY_NAMES[email];
+  const first = p['FirstName'] || '';
+  const last  = (p['LastName'] || '').split(' ');
+  if (['de','del'].includes((last[0] || '').toLowerCase()) && last[1]) {
+    return first + ' ' + last[0] + ' ' + last[1];
+  }
+  return first + ' ' + (last[0] || '');
+}
+
+// ══════════════════════════════════════════════
+// LOGIN — authenticates against Directory Sheet
+// ══════════════════════════════════════════════
+async function doLogin() {
+  const emailInput = document.getElementById('login-email').value.trim().toLowerCase();
+  const passInput  = document.getElementById('login-pass').value;
+  const btn        = document.querySelector('.login-btn');
+  const err        = document.getElementById('login-error');
+
+  btn.textContent = 'Signing in...';
+  btn.disabled = true;
+  err.style.display = 'none';
+
+  try {
+    // Credentials are checked inside the Directory Apps Script. The browser never receives passwords.
+    const res  = await fetch(DIRECTORY_URL, {
+      method: 'POST',
+      body: JSON.stringify({ email: emailInput, pass: passInput })
+    });
+    const json = await res.json();
+
+    if (json.ok) {
+      currentUser = json.user;
+      PARTNERS    = json.data || [];
+      try { sessionStorage.setItem('anza30-session', JSON.stringify({ user: currentUser, partners: PARTNERS })); } catch(e) {}
+      showApp();
+    } else {
+      err.style.display = 'block';
+      err.textContent = 'Incorrect email or password.';
+      setTimeout(() => err.style.display = 'none', 3000);
+    }
+  } catch(e) {
+    err.style.display = 'block';
+    err.textContent = 'Could not connect. Check your internet connection.';
+    setTimeout(() => err.style.display = 'none', 4000);
+    console.warn('Login error:', e);
+  }
+
+  btn.textContent = 'Sign in';
+  btn.disabled = false;
+}
+
+function showApp() {
+  document.getElementById('login-screen').style.display = 'none';
+  document.getElementById('app').style.display = 'flex';
+  document.getElementById('sidebar-username').textContent = _shortName(currentUser);
+  buildPartners();
+  loadDeals();
+  loadPortfolio();
+  loadKnowledge();
+}
+
+function doLogout() {
+  try { sessionStorage.removeItem('anza30-session'); } catch(e) {}
+  currentUser = null;
+  PARTNERS = [];
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('app').style.display = 'none';
+  document.getElementById('login-email').value = '';
+  document.getElementById('login-pass').value = '';
+}
+
+['login-email','login-pass'].forEach(id => {
+  document.getElementById(id).addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+});
+
+// ══════════════════════════════════════════════
+// NAV
+// ══════════════════════════════════════════════
+const pageTitles = {
+  home:'Home', deals:'Live Deals', archive:'Deal Archive',
+  portfolio:'Portfolio', partners:'Partners',
+  knowledge:'Knowledge Hub'
+};
+
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('mobile-overlay').classList.toggle('open');
+}
+
+function showPage(id, el) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  document.getElementById('page-' + id).classList.add('active');
+  el.classList.add('active');
+  document.getElementById('topbar-title').textContent = pageTitles[id] || id;
+  window.scrollTo(0,0);
+  if (window.innerWidth <= 768) {
+    document.getElementById('sidebar').classList.remove('open');
+    document.getElementById('mobile-overlay').classList.remove('open');
+  }
+}
+
+// ══════════════════════════════════════════════
+// DEAL EXPAND
+// ══════════════════════════════════════════════
+function toggleExpand(id) {
+  const el = document.getElementById(id);
+  if (el) el.classList.toggle('open');
+}
+
+// ══════════════════════════════════════════════
+// DEALS ENGINE
+// ══════════════════════════════════════════════
+function fmtMoney(n) {
+  if (!n && n !== 0) return '—';
+  return '$' + Number(n).toLocaleString('en-US');
+}
+
+function fmtDate(raw) {
+  if (!raw) return '—';
+  const d = new Date(raw);
+  if (isNaN(d)) return raw;
+  return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: 'numeric' });
+}
+
+function daysLeft(raw) {
+  if (!raw) return '';
+  const d = new Date(raw);
+  const diff = Math.ceil((d - Date.now()) / 86400000);
+  if (diff < 0) return 'Closed';
+  if (diff === 0) return 'Closes today';
+  return diff + ' day' + (diff === 1 ? '' : 's') + ' left';
+}
+
+function buildVoteStrip(invest, pass, abstain) {
+  const decisive   = invest + pass;
+  const pct        = decisive > 0 ? Math.round(invest / decisive * 100) : 0;
+  const totalVoted = invest + pass + abstain;
+  const quorumNeeded = Math.ceil(totalPartners() * QUORUM_PCT);
+  const quorumMet  = totalVoted >= quorumNeeded;
+  const passing    = pct >= PASS_PCT * 100;
+  const barColor   = passing ? 'var(--green)' : quorumMet ? 'var(--red)' : 'var(--amber)';
+  const pctColor   = passing ? 'var(--green)' : quorumMet ? 'var(--red)' : 'var(--amber)';
+  const quorumVal  = quorumMet
+    ? '<span class="qs-val" style="color:var(--green)">Met ✓</span>'
+    : '<span class="qs-val" style="color:var(--amber)">' + (quorumNeeded - totalVoted) + ' needed</span>';
+  return `
+    <div class="vote-strip">
+      <div class="vote-strip-verdict">
+        <span class="${passing ? 'vs-label active-green' : 'vs-label'}">Approved</span>
+        <span class="${!passing && quorumMet ? 'vs-label active-red' : 'vs-label'}">Denied</span>
+      </div>
+      <div class="vote-strip-bar-wrap">
+        <div class="vote-strip-track">
+          <div class="vote-strip-fill" style="width:${pct}%;background:${barColor}"></div>
+          <div class="vote-strip-threshold" style="left:${PASS_PCT * 100}%"></div>
+        </div>
+      </div>
+      <div class="vote-strip-pct" style="color:${pctColor}">${pct}%</div>
+      <div class="vote-strip-quorum">
+        <span class="qs-label">Quorum</span>${quorumVal}
+      </div>
+    </div>`;
+}
+
+function buildInlineVote(invest, pass, abstain) {
+  const decisive   = invest + pass;
+  const investPct  = decisive > 0 ? Math.round(invest / decisive * 100) : 0;
+  const passPct    = decisive > 0 ? Math.round(pass   / decisive * 100) : 0;
+  const totalVoted = invest + pass + abstain;
+  const quorumNeeded = Math.ceil(totalPartners() * QUORUM_PCT);
+  const quorumMet  = totalVoted >= quorumNeeded;
+  const passing    = investPct >= PASS_PCT * 100;
+  const quorumBar  = quorumMet && passing
+    ? `<div class="quorum-bar pass">✓ On track to pass — invest at ${investPct}% of decisive votes (threshold: ${Math.round(PASS_PCT * 100)}%)</div>`
+    : quorumMet
+    ? `<div class="quorum-bar fail">✗ Quorum met but failing — invest at ${investPct}% (threshold: ${Math.round(PASS_PCT * 100)}%)</div>`
+    : `<div class="quorum-bar fail">⏳ Quorum not yet met — ${quorumNeeded - totalVoted} more vote${quorumNeeded - totalVoted === 1 ? '' : 's'} needed (${totalVoted}/${totalPartners()})</div>`;
+  return `
+    <div class="inline-vote">
+      <div class="inline-vote-title">Live voting — ${totalVoted} of ${totalPartners()} partners voted${quorumMet ? ' · quorum reached' : ''}</div>
+      <div class="vblocks">
+        <div class="vblock"><div class="vblock-num invest">${invest}</div><div class="vblock-label">Invest</div></div>
+        <div class="vblock"><div class="vblock-num pass">${pass}</div><div class="vblock-label">Pass</div></div>
+        <div class="vblock"><div class="vblock-num abstain">${abstain}</div><div class="vblock-label">Abstain</div></div>
+      </div>
+      <div class="prog-row"><span class="prog-label">Invest</span><div class="prog-track"><div class="prog-fill i" style="width:${investPct}%"></div></div><span class="prog-pct">${investPct}%</span></div>
+      <div class="prog-row"><span class="prog-label">Pass</span><div class="prog-track"><div class="prog-fill p" style="width:${passPct}%"></div></div><span class="prog-pct">${passPct}%</span></div>
+      ${quorumBar}
+    </div>`;
+}
+
+function buildDealCard(d, idx, prefix) {
+  const invest  = Number(d['Invest'])  || 0;
+  const pass    = Number(d['Pass'])    || 0;
+  const abstain = Number(d['Abstain']) || 0;
+  const id      = prefix + '-deal-' + idx;
+  const voteUrl  = d['Vote form URL'] || '#';
+  return `
+    <div class="deal-card" style="${idx > 0 ? 'margin-top:2px' : ''}">
+      <div class="deal-card-header" onclick="toggleExpand('${id}')">
+        <div>
+          <div class="deal-sector-tag">${(d['Sector'] || '').toUpperCase()}</div>
+          <div class="deal-name">${d['Name']} — ${d['Stage']}</div>
+          <div class="deal-meta">${fmtMoney(d['Raise'])} raise · ${fmtMoney(d['Valuation'])} pre · Led by ${d['Lead'] || '—'}</div>
+        </div>
+        <div class="deal-right">
+          <span class="deadline-tag">${daysLeft(d['Deadline'])}</span>
+          <span class="status-dot open">Voting open</span>
+        </div>
+      </div>
+      ${buildVoteStrip(invest, pass, abstain)}
+      <div class="deal-expand" id="${id}">
+        <div class="deal-expand-inner">
+        <div class="deal-expand-grid">
+          <div><div class="deal-field-label">Lead partner</div><div class="deal-field-value">${d['Lead'] || '—'}</div></div>
+          <div><div class="deal-field-label">Market</div><div class="deal-field-value">${d['Sector'] || '—'}</div></div>
+          <div><div class="deal-field-label">Proposed check</div><div class="deal-field-value">${fmtMoney(d['Check'])}</div></div>
+          <div><div class="deal-field-label">Instrument</div><div class="deal-field-value">${d['Instrument'] || '—'}</div></div>
+          <div><div class="deal-field-label">Revenue</div><div class="deal-field-value">${d['Revenue'] || '—'}</div></div>
+          <div><div class="deal-field-label">Voting deadline</div><div class="deal-field-value">${fmtDate(d['Deadline'])}</div></div>
+        </div>
+        ${buildInlineVote(invest, pass, abstain)}
+        <div class="deal-actions">
+          ${d['Pitch Deck URL'] ? `<a href="${d['Pitch Deck URL']}" target="_blank" class="btn btn-outline">Pitch deck</a>` : ''}
+          ${d['DD Report URL']  ? `<a href="${d['DD Report URL']}"  target="_blank" class="btn btn-outline">anza30 DD Report</a>` : ''}
+          <a href="${voteUrl}"  target="_blank" class="btn btn-gold">Cast vote</a>
+        </div>
+        </div><!-- /deal-expand-inner -->
+      </div>
+    </div>`;
+}
+
+function renderArchive(deals) {
+  const archived = deals.filter(d => d['Status'] === 'Archive');
+  const el = document.getElementById('archive-container');
+  if (!el) return;
+  if (!archived.length) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--text-muted);padding:16px 0;">No archived deals yet.</div>';
+    return;
+  }
+  const groups = {};
+  archived.forEach(d => {
+    const date  = d['Deadline'] ? new Date(d['Deadline']) : null;
+    const label = date && !isNaN(date)
+      ? date.toLocaleDateString('en-GB', { month: 'long', year: 'numeric' })
+      : 'Unknown date';
+    if (!groups[label]) groups[label] = [];
+    groups[label].push(d);
+  });
+  const sorted = Object.keys(groups).sort((a,b) => new Date('1 '+b) - new Date('1 '+a));
+  const hdr = `<thead><tr><th>Company</th><th>Stage</th><th>Outcome</th><th>% Approved</th><th>Voting partners</th><th>Quorum</th><th>Pitch Deck</th><th>DD Report</th></tr></thead>`;
+  let html = '';
+  sorted.forEach(label => {
+    html += `<div class="arch-month-label">${label}</div><div class="table-wrap"><table class="data-table">${hdr}<tbody>`;
+    groups[label].forEach(d => {
+      const inv  = Number(d['Invest']) || 0;
+      const pas  = Number(d['Pass'])   || 0;
+      const abs  = Number(d['Abstain'])|| 0;
+      const tot  = inv + pas + abs;
+      const dec  = inv + pas;
+      const pct  = dec > 0 ? Math.round(inv/dec*100) : 0;
+      const qmet = tot >= Math.ceil(totalPartners() * QUORUM_PCT);
+      const out  = d['Outcome'] || (pct >= PASS_PCT * 100 ? 'Invested' : 'Passed');
+      const isInv = out === 'Invested';
+      html += `<tr>
+        <td><strong>${d['Name']}</strong><br><span style="font-size:11px;color:var(--text-muted)">${d['Sector']||''}</span></td>
+        <td>${d['Stage']||'—'}</td>
+        <td><span class="tag ${isInv?'tag-invested':'tag-passed'}">${out}</span></td>
+        <td class="num" style="${isInv?'color:var(--green);font-weight:500':''}">${pct}%</td>
+        <td class="num">${tot}</td>
+        <td style="font-size:11px;color:${qmet?'var(--green)':'var(--red)'}">${qmet?'✓ Met':'✗ Not met'}</td>
+        <td>${d['Pitch Deck URL']?`<a href="${d['Pitch Deck URL']}" target="_blank" style="font-size:11px;color:var(--navy)">Open ↗</a>`:'<span style="font-size:11px;color:var(--text-muted)">—</span>'}</td>
+        <td>${d['DD Report URL']?`<a href="${d['DD Report URL']}" target="_blank" style="font-size:11px;color:var(--navy)">Open ↗</a>`:'<span style="font-size:11px;color:var(--text-muted)">—</span>'}</td>
+      </tr>`;
+    });
+    html += '</tbody></table></div>';
+  });
+  el.innerHTML = html;
+}
+
+function renderDeals(deals) {
+  const badge = document.querySelector('.nav-badge');
+  if (badge) badge.textContent = deals.length;
+  const pill = document.getElementById('topbar-pill');
+  if (pill) pill.textContent = deals.length + ' vote' + (deals.length===1?'':'s') + ' open';
+  const statDeals = document.getElementById('stat-active-deals');
+  if (statDeals) statDeals.textContent = deals.length;
+  ['home-deals-container','deals-page-container'].forEach(cid => {
+    const el = document.getElementById(cid);
+    if (!el) return;
+    el.innerHTML = deals.length === 0
+      ? '<div style="font-size:12px;color:var(--text-muted);padding:16px 0;">No active deals at the moment.</div>'
+      : deals.map((d,i) => buildDealCard(d, i, cid==='home-deals-container'?'h':'d')).join('');
+  });
+}
+
+async function loadDeals() {
+  try {
+    const res  = await fetch(APPS_SCRIPT_URL);
+    const json = await res.json();
+    DEALS = json.data || [];
+    renderDeals(DEALS.filter(d => d['Status'] === 'Live'));
+    renderArchive(DEALS);
+  } catch(err) {
+    console.warn('Could not load deals:', err);
+    ['home-deals-container','deals-page-container'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.innerHTML = '<div style="font-size:12px;color:var(--text-muted);padding:16px 0;">Could not load deals — check your connection.</div>';
+    });
+  }
+}
+
+// ══════════════════════════════════════════════
+// PORTFOLIO ENGINE
+// ══════════════════════════════════════════════
+function portfolioCard(d) {
+  const name     = d['Name']       || '—';
+  const sector   = d['Sector']     || '—';
+  const lead     = d['Lead']       || '—';
+  const invested = d['Invested'];
+  const nav      = d['NAV'];
+  const moic     = d['MOIC']       || '';
+  const status   = d['Status']     || 'Active';
+  const update   = d['Update']     || '';
+  const domain   = d['LogoDomain'] || '';
+  const date     = d['Date']       || '';
+  const location = d['Location']   || '';
+  const updateLink = d['UpdateLink'] || '';
+
+  const moicNum    = parseFloat(String(moic).replace('x','')) || 0;
+  const initial    = name ? name[0].toUpperCase() : '?';
+  const logoHtml   = domain
+    ? `<img src="https://logo.clearbit.com/${domain}" onerror="this.parentNode.innerHTML='<span class=\\'port-logo-fallback\\'>${initial}</span>'" alt="${name}">`
+    : `<span class="port-logo-fallback">${initial}</span>`;
+  const statusLower = status.toLowerCase();
+  const isExited   = statusLower === 'exited';
+  const isDead     = statusLower === 'dead';
+  const navLabel   = isExited ? 'Realized NAV' : 'Current NAV';
+  const tagClass   = isExited ? 'tag-exited' : isDead ? 'tag-dead' : 'tag-active';
+  const moicColor  = isDead ? 'var(--dead)' : 'var(--green)';
+  const pitchDeck = d['Pitch Deck URL'] || '';
+  const ddReport  = d['DD Report URL']  || '';
+  const updateHtml = update
+    ? `<span class="port-update-text"><strong>${date ? date + ' · ' : ''}</strong>${update}</span>
+       ${updateLink ? `<a href="${updateLink}" class="btn btn-outline btn-sm" style="white-space:nowrap">View update ↗</a>` : ''}`
+    : '';
+  const docsHtml = (pitchDeck || ddReport)
+    ? `<div class="port-docs">
+        ${pitchDeck ? `<a href="${pitchDeck}" target="_blank" class="btn btn-outline btn-sm">Pitch deck</a>` : ''}
+        ${ddReport  ? `<a href="${ddReport}"  target="_blank" class="btn btn-outline btn-sm">anza30 DD Report</a>` : ''}
+       </div>`
+    : '';
+  return `
+    <div class="port-card">
+      <div class="port-card-header">
+        <div class="port-logo">${logoHtml}</div>
+        <div class="port-header-info">
+          <div class="port-company-name">${name}</div>
+          <div class="port-company-sub">${sector}${location?' · '+location:''} · Lead: ${lead}</div>
+        </div>
+        <div class="port-header-right">
+          <div class="port-moic" style="color:${moicColor}">${moicNum>0?moicNum.toFixed(2)+'x':'—'}</div>
+          <div class="port-moic-label">MOIC${isExited?' · Realized':''}</div>
+        </div>
+      </div>
+      <div class="port-metrics">
+        <div class="port-metric"><div class="port-metric-label">Invested</div><div class="port-metric-value">${fmtMoney(invested)}</div></div>
+        <div class="port-metric"><div class="port-metric-label">${navLabel}</div><div class="port-metric-value pos">${fmtMoney(nav)}</div></div>
+        <div class="port-metric"><div class="port-metric-label">Date</div><div class="port-metric-value">${date||'—'}</div></div>
+        <div class="port-metric"><div class="port-metric-label">Status</div><div class="port-metric-value"><span class="tag ${tagClass}">${status}</span></div></div>
+      </div>
+      ${updateHtml?`<div class="port-update">${updateHtml}</div>`:''}
+      ${docsHtml}
+    </div>`;
+}
+
+function renderPortfolioDynamic(el, data) {
+  if (!data.length) {
+    el.innerHTML = '<div style="font-size:12px;color:var(--text-muted);padding:16px 0;">No portfolio companies yet.</div>';
+    return;
+  }
+  el.innerHTML = '<div class="port-grid">' + data.map(d => portfolioCard(d)).join('') + '</div>';
+  // Update home stat cards
+  const active = data.filter(d => (d['Status']||'').toLowerCase() === 'active').length;
+  const totalInv = data.reduce((s,d) => s + (Number(d['Invested'])||0), 0);
+  const moicVals = data.map(d => parseFloat(String(d['MOIC']||'').replace('x',''))).filter(n => !isNaN(n) && n > 0);
+  const avgMoic  = moicVals.length ? (moicVals.reduce((a,b)=>a+b,0)/moicVals.length).toFixed(2)+'x' : '—';
+  const el2 = document.getElementById('stat-portfolio-count'); if (el2) el2.textContent = active;
+  const el3 = document.getElementById('stat-capital');
+  if (el3) el3.textContent = totalInv >= 1000000 ? '$'+(totalInv/1000000).toFixed(1)+'M' : '$'+Math.round(totalInv/1000)+'K';
+  const el4 = document.getElementById('stat-moic'); if (el4) el4.textContent = avgMoic;
+}
+
+function renderPortfolioStatic(el) {
+  el.innerHTML = '<div style="font-size:12px;color:var(--text-muted);padding:16px 0;">Could not load portfolio. Check your connection.</div>';
+}
+
+async function loadPortfolio() {
+  const el = document.getElementById('portfolio-container');
+  if (!el) return;
+  try {
+    const res  = await fetch(PORTFOLIO_URL);
+    const json = await res.json();
+    renderPortfolioDynamic(el, json.data || []);
+  } catch(err) {
+    console.warn('Portfolio load failed:', err);
+    renderPortfolioStatic(el);
+  }
+}
+
+// ══════════════════════════════════════════════
+// PARTNERS — loads from Directory Sheet
+// ══════════════════════════════════════════════
+// ── Partners: sort + card grid ──
+let _activeCard = null;
+let _partnerSort = 'name';
+
+function sortPartners(by, btn) {
+  _partnerSort = by;
+  document.querySelectorAll('.p-sort-btn').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  buildPartners();
+}
+
+function _ini(p) {
+  const f = (p['FirstName'] || '?')[0].toUpperCase();
+  const l = (p['LastName']  || '?').replace(/^de |^del /i,'')[0].toUpperCase();
+  return f + l;
+}
+
+function _shortName(p) {
+  const email = (p['Email'] || '').toLowerCase();
+  const DISPLAY = {
+    'oscar.toca@gmail.com':          'Oscar de Toca',
+    'jaimedeartinano@gmail.com':     'Jaime de Artiñano',
+    'alvartingut@gmail.com':         'Álvaro de Artiñano',
+    'ivanderamon@theconvexity.com':  'Ivan de Ramon',
+    'nachovazquezn@gmail.com':       'Nacho Vázquez',
+    'ngalianaruizdeadana@gmail.com': 'Nacho Galiana',
+    'quiquevives1999@gmail.com':         'Quique Vives',
+    'ad4026@columbia.edu':           'Alex de Diego',
+  };
+  if (DISPLAY[email]) return DISPLAY[email];
+  const last = (p['LastName'] || '').split(' ');
+  if (['de','del'].includes((last[0]||'').toLowerCase()) && last[1]) {
+    return p['FirstName'] + ' ' + last[0] + ' ' + last[1];
+  }
+  return p['FirstName'] + ' ' + (last[0] || '');
+}
+
+function buildPartners() {
+  const grid = document.getElementById('partners-grid');
+  if (!grid) return;
+
+  const pinned = ['pablotorne@gmail.com','oscar.toca@gmail.com','oscar.martinez.cubel@gmail.com'];
+  let sorted = [...PARTNERS];
+
+  if (_partnerSort === 'name') {
+    sorted.sort((a,b) => {
+      const ai = pinned.indexOf((a['Email']||'').toLowerCase());
+      const bi = pinned.indexOf((b['Email']||'').toLowerCase());
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+      return (a['FirstName']||'').localeCompare(b['FirstName']||'', 'es');
+    });
+  } else {
+    sorted.sort((a,b) => (a['Location']||'').localeCompare(b['Location']||'','es'));
+  }
+
+  const sub = document.getElementById('partners-sub');
+  if (sub) sub.textContent = sorted.length + ' partners · anza30 · founded 2026';
+
+  _activeCard = null;
+  grid.innerHTML = '';
+
+  sorted.forEach(p => {
+    const name = _shortName(p);
+    const loc  = p['Location']   || '—';
+    const bg   = p['Background'] || '—';
+    const email = p['Email']     || '';
+    const wa    = p['WhatsApp']  || '—';
+    const li    = p['LinkedIn']  || '';
+
+    const card = document.createElement('div');
+    card.className = 'p-card';
+    card.innerHTML = `
+      <div class="p-name">${name}</div>
+      <div class="p-loc">${loc}</div>
+      <div class="p-bg">${bg}</div>
+      <div class="p-detail">
+        <div class="p-row"><span class="p-dlabel">Email</span><span class="p-dval">${email}</span></div>
+        <div class="p-row"><span class="p-dlabel">WhatsApp</span><span class="p-dval">${wa}</span></div>
+        ${li ? `<div class="p-row"><span class="p-dlabel">LinkedIn</span><span class="p-dval"><a href="${li}" target="_blank">Profile ↗</a></span></div>` : ''}
+      </div>`;
+
+    card.addEventListener('click', () => {
+      if (_activeCard && _activeCard !== card) _activeCard.classList.remove('open');
+      card.classList.toggle('open');
+      _activeCard = card.classList.contains('open') ? card : null;
+    });
+
+    grid.appendChild(card);
+  });
+}
+
+// ══════════════════════════════════════════════
+// KNOWLEDGE HUB ENGINE
+// ══════════════════════════════════════════════
+const KNOWLEDGE_URL = 'https://script.google.com/macros/s/AKfycbw5HZmerrZ51nGcVN-BcdT0rXjOzCnAKND8I-lbirJdFnZzYNOpNwyiZDTUfFAciZnG/exec';
+let KB_DATA = [];
+let KB_ACTIVE_FILTER = 'All';
+
+const TYPE_EMOJI = {
+  Article:'📄', Podcast:'🎧', Tool:'🛠️', Video:'▶️', Report:'📊', Screenshot:'🖼️'
+};
+
+function filterKB(cat, btn) {
+  KB_ACTIVE_FILTER = cat;
+  document.querySelectorAll('.kb-filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderKBGrid();
+}
+
+function fmtKBDate(raw) {
+  if (!raw) return '';
+  const d = new Date(raw);
+  if (isNaN(d)) return raw;
+  return d.toLocaleDateString('en-GB', { month: 'short', year: 'numeric' });
+}
+
+function renderKBGrid() {
+  const grid = document.getElementById('kb-grid');
+  if (!grid) return;
+  const items = KB_ACTIVE_FILTER === 'All'
+    ? KB_DATA
+    : KB_DATA.filter(d => d['Category'] === KB_ACTIVE_FILTER || d['Type'] === KB_ACTIVE_FILTER);
+  if (!items.length) {
+    grid.innerHTML = '<div class="kb-empty">No resources in this category yet.</div>';
+    return;
+  }
+  grid.innerHTML = items.map(d => {
+    const type  = d['Type']        || 'Article';
+    const emoji = TYPE_EMOJI[type] || '📄';
+    const typeClass = 'kb-type-' + type.split(' ')[0];
+    return `
+      <a class="kb-card" href="${d['URL']||'#'}" target="_blank" rel="noopener">
+        <div class="kb-card-body">
+          <span class="kb-type-pill ${typeClass}">${emoji} ${type}</span>
+          <div class="kb-card-title">${d['Title']||'Untitled'}</div>
+          <div class="kb-card-desc">${d['Description']||''}</div>
+        </div>
+        <div class="kb-card-footer">
+          <span class="kb-card-date">${fmtKBDate(d['Date Added'])}</span>
+          <span class="kb-card-arrow">↗</span>
+        </div>
+      </a>`;
+  }).join('');
+}
+
+function buildKBFilters(data) {
+  const cats = ['All', ...new Set(data.map(d => d['Category']).filter(Boolean))];
+  const container = document.getElementById('kb-filters');
+  if (!container) return;
+  container.innerHTML = cats.map((c,i) =>
+    `<button class="kb-filter-btn${i===0?' active':''}" onclick="filterKB('${c}',this)">${c}</button>`
+  ).join('');
+}
+
+async function loadKnowledge() {
+  const grid = document.getElementById('kb-grid');
+  if (!grid) return;
+  if (KNOWLEDGE_URL === 'REPLACE_WITH_KNOWLEDGE_APPS_SCRIPT_URL') {
+    grid.innerHTML = '<div class="kb-empty">Knowledge Hub not yet connected. Create the Sheet and paste the Apps Script URL to activate.</div>';
+    document.getElementById('kb-filters').style.display = 'none';
+    return;
+  }
+  document.getElementById('kb-filters').style.display = 'flex';
+  try {
+    const res  = await fetch(KNOWLEDGE_URL);
+    const json = await res.json();
+    KB_DATA = json.data || [];
+    buildKBFilters(KB_DATA);
+    renderKBGrid();
+  } catch(err) {
+    console.warn('Knowledge Hub load failed:', err);
+    grid.innerHTML = '<div class="kb-empty">Could not load resources — check your connection.</div>';
+  }
+}
+
+// ══════════════════════════════════════════════
+// SESSION RESTORE
+// ══════════════════════════════════════════════
+function restoreSession() {
+  let saved = null;
+  try { saved = JSON.parse(sessionStorage.getItem('anza30-session')); } catch(e) {}
+  if (!saved || !saved.user) return;
+  currentUser = saved.user;
+  PARTNERS    = saved.partners || [];
+  showApp();
+}
+
+function setHomeSub() {
+  const el = document.getElementById('home-sub');
+  if (el) el.textContent = 'anza30 · ' + new Date().toLocaleDateString('en-GB', { month: 'long', year: 'numeric' });
+}
+setHomeSub();
+restoreSession();
+
+// Close partner modal on ESC
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    document.getElementById('partner-modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+});
+</script>
+</body>
+</html>
