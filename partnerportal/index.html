@@ -21,7 +21,8 @@
     --radius: 10px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; }
+  html { -webkit-text-size-adjust: 100%; overflow-x: hidden; }
+  body { overflow-x: hidden; }
   body { font-family: 'Inter', sans-serif; background: var(--off-white); color: var(--text); font-size: 13.5px; line-height: 1.5; min-height: 100vh; }
 
   /* LOGIN */
@@ -61,7 +62,7 @@
   .sidebar-logout:hover { color: rgba(255,255,255,0.6); }
 
   /* MAIN */
-  .main { margin-left: var(--sidebar-w); min-height: 100vh; display: flex; flex-direction: column; }
+  .main { margin-left: var(--sidebar-w); min-height: 100vh; display: flex; flex-direction: column; flex: 1; min-width: 0; width: 100%; }
   .topbar { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; height: 52px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 50; }
   .topbar-left { display: flex; align-items: center; gap: 12px; }
   .topbar-title { font-size: 14px; font-weight: 500; color: var(--navy); }
@@ -356,6 +357,17 @@
     .deal-right { flex-direction: column; align-items: flex-end; gap: 4px; }
     .port-card-header { gap: 10px; }
   }
+  @media (max-width: 768px) {
+    .data-table.stack thead { display: none; }
+    .data-table.stack, .data-table.stack tbody, .data-table.stack tr, .data-table.stack td { display: block; width: 100%; }
+    .data-table.stack { background: transparent; }
+    .data-table.stack tr { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; padding: 6px 0; }
+    .data-table.stack tr:hover td { background: transparent; }
+    .data-table.stack td { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 7px 14px; border-bottom: none; text-align: right; }
+    .data-table.stack td::before { content: attr(data-label); font-size: 11px; color: var(--text-muted); font-family: 'Inter', sans-serif; font-weight: 400; text-align: left; flex-shrink: 0; }
+    .data-table.stack td.stack-title { display: block; text-align: left; padding: 8px 14px 10px; border-bottom: 1px solid var(--border); margin-bottom: 4px; }
+    .data-table.stack td.stack-title::before { content: none; }
+  }
   @media (max-width: 480px) {
     .stat-grid { grid-template-columns: repeat(2,1fr); }
     .partners-grid { grid-template-columns: 1fr; }
@@ -473,7 +485,7 @@
         <div style="background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 18px;margin-bottom:20px;">
           <div style="font-size:11px;font-weight:500;color:var(--text-muted);letter-spacing:0.05em;margin-bottom:10px;">DEAL INTAKE PROCESS</div>
           <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;">
-            <a href="REPLACE_WITH_QUALIFYING_QUESTIONNAIRE_URL" target="_blank" class="btn btn-primary">
+            <a href="https://tally.so/r/PdVybb" target="_blank" class="btn btn-primary">
               Step 1 — Qualifying questionnaire
             </a>
             <div style="display:flex;align-items:center;gap:6px;color:var(--text-muted);font-size:12px;flex-shrink:0;">
@@ -858,7 +870,7 @@ function renderArchive(deals) {
   const hdr = `<thead><tr><th>Company</th><th>Stage</th><th>Outcome</th><th>% Approved</th><th>Voting partners</th><th>Quorum</th><th>Pitch Deck</th><th>DD Report</th></tr></thead>`;
   let html = '';
   sorted.forEach(label => {
-    html += `<div class="arch-month-label">${label}</div><div class="table-wrap"><table class="data-table">${hdr}<tbody>`;
+    html += `<div class="arch-month-label">${label}</div><div class="table-wrap"><table class="data-table stack">${hdr}<tbody>`;
     groups[label].forEach(d => {
       const inv  = Number(d['Invest']) || 0;
       const pas  = Number(d['Pass'])   || 0;
@@ -870,14 +882,14 @@ function renderArchive(deals) {
       const out  = d['Outcome'] || (pct >= PASS_PCT * 100 ? 'Invested' : 'Passed');
       const isInv = out === 'Invested';
       html += `<tr>
-        <td><strong>${d['Name']}</strong><br><span style="font-size:11px;color:var(--text-muted)">${d['Sector']||''}</span></td>
-        <td>${d['Stage']||'—'}</td>
-        <td><span class="tag ${isInv?'tag-invested':'tag-passed'}">${out}</span></td>
-        <td class="num" style="${isInv?'color:var(--green);font-weight:500':''}">${pct}%</td>
-        <td class="num">${tot}</td>
-        <td style="font-size:11px;color:${qmet?'var(--green)':'var(--red)'}">${qmet?'✓ Met':'✗ Not met'}</td>
-        <td>${d['Pitch Deck URL']?`<a href="${d['Pitch Deck URL']}" target="_blank" style="font-size:11px;color:var(--navy)">Open ↗</a>`:'<span style="font-size:11px;color:var(--text-muted)">—</span>'}</td>
-        <td>${d['DD Report URL']?`<a href="${d['DD Report URL']}" target="_blank" style="font-size:11px;color:var(--navy)">Open ↗</a>`:'<span style="font-size:11px;color:var(--text-muted)">—</span>'}</td>
+        <td class="stack-title"><strong>${d['Name']}</strong><br><span style="font-size:11px;color:var(--text-muted)">${d['Sector']||''}</span></td>
+        <td data-label="Stage">${d['Stage']||'—'}</td>
+        <td data-label="Outcome"><span class="tag ${isInv?'tag-invested':'tag-passed'}">${out}</span></td>
+        <td data-label="% Approved" class="num" style="${isInv?'color:var(--green);font-weight:500':''}">${pct}%</td>
+        <td data-label="Voting partners" class="num">${tot}</td>
+        <td data-label="Quorum" style="font-size:11px;color:${qmet?'var(--green)':'var(--red)'}">${qmet?'✓ Met':'✗ Not met'}</td>
+        <td data-label="Pitch Deck">${d['Pitch Deck URL']?`<a href="${d['Pitch Deck URL']}" target="_blank" style="font-size:11px;color:var(--navy)">Open ↗</a>`:'<span style="font-size:11px;color:var(--text-muted)">—</span>'}</td>
+        <td data-label="DD Report">${d['DD Report URL']?`<a href="${d['DD Report URL']}" target="_blank" style="font-size:11px;color:var(--navy)">Open ↗</a>`:'<span style="font-size:11px;color:var(--text-muted)">—</span>'}</td>
       </tr>`;
     });
     html += '</tbody></table></div>';
@@ -930,7 +942,7 @@ function portfolioCard(d) {
   const status   = d['Status']     || 'Active';
   const update   = d['Update']     || '';
   const domain   = d['LogoDomain'] || '';
-  const date     = d['Date']       || '';
+  const date     = d['Date'] ? fmtDate(d['Date']) : '';
   const location = d['Location']   || '';
   const updateLink = d['UpdateLink'] || '';
 
