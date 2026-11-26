@@ -629,12 +629,6 @@ button { font: inherit; color: inherit; }
     --px: calc(100cqw / 825);
     --shift: 112.5;
   }
-  .grid > .card:last-child:nth-child(3n + 1) {
-    grid-column: span 6;
-    aspect-ratio: 3 / 1;
-    --px: calc(100cqw / 1650);
-    --shift: 525;
-  }
 }
 @media (min-width: 641px) and (max-width: 1024px) {
   .grid > .card:last-child:nth-child(2n + 1) {
